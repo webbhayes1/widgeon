@@ -1,0 +1,70 @@
+name: Widgeon
+options:
+  bundleIdPrefix: com.webbhayes
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    TARGETED_DEVICE_FAMILY: "1"
+    CODE_SIGN_STYLE: Automatic
+
+targets:
+  Widgeon:
+    type: application
+    platform: iOS
+    sources:
+      - App
+      - Shared
+    info:
+      path: App/Info.plist
+      properties:
+        UILaunchScreen: {}
+        CFBundleDisplayName: Widgeon
+        NSHealthShareUsageDescription: Widgeon reads your step count to show progress toward your daily step goal on your widgets.
+        NSHealthUpdateUsageDescription: Widgeon never writes health data.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.webbhayes.widgeon
+    entitlements:
+      path: App/Widgeon.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.webbhayes.widgeon
+        com.apple.developer.healthkit: true
+    dependencies:
+      - target: WidgeonWidgets
+        embed: true
+
+  WidgeonWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Widgets
+      - Shared
+    info:
+      path: Widgets/Info.plist
+      properties:
+        CFBundleDisplayName: Widgeon Widgets
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widgets/WidgeonWidgets.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.webbhayes.widgeon
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.webbhayes.widgeon.widgets
+
+schemes:
+  Widgeon:
+    build:
+      targets:
+        Widgeon: all
+    run:
+      config: Debug
