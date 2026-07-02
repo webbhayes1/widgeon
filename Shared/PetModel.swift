@@ -7,13 +7,15 @@ struct PetStage {
 }
 
 enum PetCharacter: String, CaseIterable, Codable, Identifiable {
-    case duck, cat, plant, pixel
+    case duck, cat, dog, turtle, plant, pixel
     var id: String { rawValue }
 
     var displayName: String {
         switch self {
         case .duck: return "Duck"
         case .cat: return "Cat"
+        case .dog: return "Dog"
+        case .turtle: return "Turtle"
         case .plant: return "Plant"
         case .pixel: return "Pixel Pal"
         }
@@ -40,6 +42,26 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
             .init(minFeeds: 30, emoji: "🐈‍⬛", title: "✨ Mystic cat"),
             .init(minFeeds: 60, emoji: "😼", title: "🎩 Distinguished cat"),
             .init(minFeeds: 100, emoji: "🐅", title: "👑 Apex feline"),
+        ]
+        case .dog: return [
+            .init(minFeeds: 0, emoji: "🥚", title: "A wiggly egg"),
+            .init(minFeeds: 1, emoji: "🐶", title: "Puppy"),
+            .init(minFeeds: 3, emoji: "🐕", title: "Growing pup"),
+            .init(minFeeds: 7, emoji: "🐕", title: "Good dog"),
+            .init(minFeeds: 14, emoji: "🦮", title: "Very good dog"),
+            .init(minFeeds: 30, emoji: "🐕‍🦺", title: "✨ Best in show"),
+            .init(minFeeds: 60, emoji: "🐩", title: "🎩 Distinguished dog"),
+            .init(minFeeds: 100, emoji: "🐺", title: "👑 Alpha wolf"),
+        ]
+        case .turtle: return [
+            .init(minFeeds: 0, emoji: "🥚", title: "A patient egg"),
+            .init(minFeeds: 1, emoji: "🐢", title: "Hatchling"),
+            .init(minFeeds: 3, emoji: "🐢", title: "Tiny turtle"),
+            .init(minFeeds: 7, emoji: "🐢", title: "Steady turtle"),
+            .init(minFeeds: 14, emoji: "🐢", title: "Proper turtle"),
+            .init(minFeeds: 30, emoji: "🐢", title: "✨ Wise turtle"),
+            .init(minFeeds: 60, emoji: "🐢", title: "🎩 Elder turtle"),
+            .init(minFeeds: 100, emoji: "🐉", title: "👑 Ancient dragon"),
         ]
         case .plant: return [
             .init(minFeeds: 0, emoji: "🌰", title: "A hopeful seed"),

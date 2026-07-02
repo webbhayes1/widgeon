@@ -54,7 +54,7 @@ struct PetView: View {
                 .foregroundStyle(.white)
                 .padding(.horizontal, 40)
 
-            HStack(spacing: 12) {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 3), spacing: 12) {
                 ForEach(PetCharacter.allCases) { c in
                     Button {
                         draftCharacter = c
@@ -66,7 +66,8 @@ struct PetView: View {
                                 .font(.system(size: 11, weight: .semibold))
                                 .foregroundStyle(.white.opacity(0.8))
                         }
-                        .frame(width: 76, height: 84)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 84)
                         .background(
                             RoundedRectangle(cornerRadius: 18)
                                 .fill(.white.opacity(draftCharacter == c ? 0.16 : 0.05))
@@ -82,6 +83,7 @@ struct PetView: View {
                     .buttonStyle(.plain)
                 }
             }
+            .padding(.horizontal, 32)
 
             Spacer()
 
