@@ -46,7 +46,7 @@ struct PetWidgetView: View {
                     Text(state.name.uppercased())
                         .font(.system(size: 13, weight: .bold))
                         .lineLimit(1)
-                    Text(state.feeds > 0 ? "Day \(state.feeds) · \(stage.title)\(streakBadge)" : "???")
+                    Text(state.feeds > 0 ? "Day \(state.feeds) · \(stage.title)\(streakBadge)" : "Ready to hatch!")
                         .font(.system(size: 10))
                         .opacity(0.8)
                         .lineLimit(1)

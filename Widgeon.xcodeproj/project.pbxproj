@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		027F892CB1E75CE3232BC3F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553B8EBD4E03F6E4DC08DC12 /* Theme.swift */; };
 		0AA2A920F404D3CE2698F2A5 /* ContentBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E029FE1092A7F7FB044E14 /* ContentBank.swift */; };
 		0C0761017589E5E57D050E70 /* Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EEA2954F7D7DEF9589071D /* Intents.swift */; };
+		0F8847706E2CCFE5457D233C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553B8EBD4E03F6E4DC08DC12 /* Theme.swift */; };
 		13A573559966B77DC68C123A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243120A3E2D328D9E8D2887C /* SettingsView.swift */; };
 		1AA0B50FE78814443682DB66 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1432EDD6500A4E7C648E7C36 /* TodayView.swift */; };
 		220DFDB22DEC933AA726F391 /* InteractiveWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B05815029C23BC4A6DAF9F9 /* InteractiveWidgets.swift */; };
@@ -71,6 +73,7 @@
 		469D758846E4259F0A93A350 /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
 		490DF449340B44ADE1D4D319 /* WidgeonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgeonApp.swift; sourceTree = "<group>"; };
 		4B05815029C23BC4A6DAF9F9 /* InteractiveWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveWidgets.swift; sourceTree = "<group>"; };
+		553B8EBD4E03F6E4DC08DC12 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		6E6C7FC4144F5F35BAC54B78 /* StaticWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgets.swift; sourceTree = "<group>"; };
 		77C286C7F6AA620442BA78E4 /* WidgeonWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = WidgeonWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8923A064CB97FAA085326BE5 /* WidgeonWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgeonWidgets.entitlements; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 				911FB14B6419181B840E9D6A /* PetModel.swift */,
 				BD5C4760D9D7ED499B2FBD9A /* SharedStore.swift */,
 				C41EF5BDFE9FA286390CC430 /* StepsManager.swift */,
+				553B8EBD4E03F6E4DC08DC12 /* Theme.swift */,
 				782C4998105D5FB04FD1FE91 /* Resources */,
 			);
 			path = Shared;
@@ -280,6 +284,7 @@
 				13A573559966B77DC68C123A /* SettingsView.swift in Sources */,
 				F1FE580693AEA05972A0F7C2 /* SharedStore.swift in Sources */,
 				DBDCED7E59C01C1535BAE55F /* StepsManager.swift in Sources */,
+				027F892CB1E75CE3232BC3F3 /* Theme.swift in Sources */,
 				1AA0B50FE78814443682DB66 /* TodayView.swift in Sources */,
 				4BB0783779787B0426E4B03A /* WidgeonApp.swift in Sources */,
 			);
@@ -298,6 +303,7 @@
 				FBC2E8A0DC2481F4ADD1CDCB /* SharedStore.swift in Sources */,
 				CA3D89E1FF7588BF2DA7F4AB /* StaticWidgets.swift in Sources */,
 				A22AB0075954D5D91B397CC2 /* StepsManager.swift in Sources */,
+				0F8847706E2CCFE5457D233C /* Theme.swift in Sources */,
 				FDCF33D3E7EDD7C5F4EF6629 /* WidgeonWidgets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

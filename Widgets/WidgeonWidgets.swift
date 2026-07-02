@@ -14,50 +14,8 @@ struct WidgeonWidgetBundle: WidgetBundle {
     }
 }
 
-// MARK: - Shared helpers
-
-extension Color {
-    init(hex: UInt32) {
-        self.init(
-            red: Double((hex >> 16) & 0xFF) / 255,
-            green: Double((hex >> 8) & 0xFF) / 255,
-            blue: Double(hex & 0xFF) / 255
-        )
-    }
-}
-
-/// The modern capsule progress bar used across the pack.
-struct CapsuleBar: View {
-    let pct: Double
-    var fill: Color = .white
-    var track: Color = .white.opacity(0.2)
-    var height: CGFloat = 8
-
-    var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .leading) {
-                Capsule().fill(track)
-                Capsule()
-                    .fill(fill)
-                    .frame(width: max(height, geo.size.width * min(1, max(0, pct))))
-            }
-        }
-        .frame(height: height)
-    }
-}
-
-struct WidgetHeader: View {
-    let text: String
-    let color: Color
-
-    var body: some View {
-        Text(text)
-            .font(.system(size: 10, weight: .semibold))
-            .foregroundStyle(color)
-    }
-}
-
 // MARK: - Simple day-based timeline shared by the static widgets
+// (Color/CapsuleBar/WidgetHeader helpers live in Shared/Theme.swift)
 
 struct DayEntry: TimelineEntry {
     let date: Date
