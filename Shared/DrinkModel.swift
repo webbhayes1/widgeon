@@ -54,6 +54,9 @@ enum Drink {
         var state = load()
         state.count += 1
         save(state)
+        if !isLimit && state.count == target {
+            XP.award("drink.goal", 15)
+        }
         return state
     }
 

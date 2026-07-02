@@ -155,7 +155,14 @@ struct PetView: View {
             HStack(spacing: 10) {
                 statChip("Day \(pet.feeds)")
                 if pet.streak >= 2 { statChip("🔥 \(pet.streak) streak") }
-                if pet.best >= 2 { statChip("⭐ best \(pet.best)") }
+                if Pet.trainedToday(pet) { statChip("⚡ trained") }
+                else if pet.best >= 2 { statChip("⭐ best \(pet.best)") }
+            }
+
+            if !Pet.trainedToday(pet) {
+                Text("Hit your step goal to train \(pet.name) 👟")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.white.opacity(0.45))
             }
 
             Spacer()

@@ -35,4 +35,8 @@ enum DailyPick {
     static func affirmation(for date: Date = Date()) -> String {
         ContentBank.affirmations[index(count: ContentBank.affirmations.count, prime: 53, date: date)]
     }
+
+    static func fortune(for date: Date = Date()) -> String {
+        ContentBank.fortunes[index(count: ContentBank.fortunes.count, prime: 41, date: date)]
+    }
 }

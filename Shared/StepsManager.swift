@@ -60,5 +60,12 @@ final class StepsManager: ObservableObject {
         SharedStore.defaults.set(SharedStore.dayKey(), forKey: "steps.date")
         await MainActor.run { self.todaySteps = steps }
         WidgetCenter.shared.reloadTimelines(ofKind: "steps")
+
+        // Digimon rules: hitting the step goal trains the pet and earns XP.
+        if steps >= StepsManager.goal {
+            XP.award("steps.goal", 30)
+            Pet.train()
+            WidgetCenter.shared.reloadTimelines(ofKind: "pet")
+        }
     }
 }

@@ -11,6 +11,8 @@ struct WidgeonWidgetBundle: WidgetBundle {
         StepsWidget()
         DrinkWidget()
         PetWidget()
+        FortuneWidget()
+        XPWidget()
     }
 }
 

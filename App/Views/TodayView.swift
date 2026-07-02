@@ -32,6 +32,7 @@ struct TodayView: View {
                 vocabCard
                 roastCard
                 affirmationCard
+                fortuneCard
                 stepsCard
             }
             .padding(16)
@@ -41,14 +42,28 @@ struct TodayView: View {
     }
 
     private var header: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            Text(Date().formatted(.dateTime.weekday(.wide).month(.wide).day()).uppercased())
-                .font(.system(size: 12, weight: .bold))
-                .kerning(1.5)
-                .foregroundStyle(Theme.gold)
-            Text("Today")
-                .font(.system(size: 36, weight: .heavy))
-                .foregroundStyle(.white)
+        HStack(alignment: .bottom) {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(Date().formatted(.dateTime.weekday(.wide).month(.wide).day()).uppercased())
+                    .font(.system(size: 12, weight: .bold))
+                    .kerning(1.5)
+                    .foregroundStyle(Theme.gold)
+                Text("Today")
+                    .font(.system(size: 36, weight: .heavy))
+                    .foregroundStyle(.white)
+            }
+            Spacer()
+            VStack(spacing: 1) {
+                Text("LVL \(XP.level)")
+                    .font(.system(size: 15, weight: .heavy))
+                    .foregroundStyle(Color(hex: 0xFFD34D))
+                Text("\(XP.total.formatted()) XP")
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundStyle(.white.opacity(0.5))
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background(Capsule().fill(.white.opacity(0.07)))
         }
         .padding(.top, 8)
     }
@@ -84,6 +99,14 @@ struct TodayView: View {
     private var affirmationCard: some View {
         Card(header: "🌤 AFFIRMATION", accent: Theme.teal, bg: Color(hex: 0x0E2A2F)) {
             Text(DailyPick.affirmation())
+                .font(.system(size: 18, weight: .medium))
+                .foregroundStyle(.white)
+        }
+    }
+
+    private var fortuneCard: some View {
+        Card(header: "🎱 DAILY FORTUNE", accent: Color(hex: 0xD48CFF), bg: Color(hex: 0x1A1024)) {
+            Text(DailyPick.fortune())
                 .font(.system(size: 18, weight: .medium))
                 .foregroundStyle(.white)
         }

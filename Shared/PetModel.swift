@@ -94,6 +94,10 @@ struct PetState: Codable {
     var lastFed: String? = nil
     var streak: Int = 0
     var best: Int = 0
+    // Digimon rules: your real steps train the pet. Optional for
+    // backward-compatible decoding of previously saved states.
+    var lastTrained: String? = nil
+    var trainedDays: Int? = 0
 }
 
 enum Pet {
@@ -136,7 +140,23 @@ enum Pet {
         state.best = max(state.best, state.streak)
         state.feeds += 1
         state.lastFed = today
+        XP.award("pet.feed", 20)
         return true
+    }
+
+    static func trainedToday(_ state: PetState) -> Bool {
+        state.lastTrained == SharedStore.dayKey()
+    }
+
+    /// Called when the daily step goal is hit — the pet counts it as training.
+    static func train() {
+        var state = load()
+        let today = SharedStore.dayKey()
+        guard state.lastTrained != today else { return }
+        state.lastTrained = today
+        state.trainedDays = (state.trainedDays ?? 0) + 1
+        save(state)
+        XP.award("pet.train", 30)
     }
 
     static func mood(_ state: PetState) -> String {
