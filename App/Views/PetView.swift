@@ -159,6 +159,14 @@ struct PetView: View {
                 else if pet.best >= 2 { statChip("⭐ best \(pet.best)") }
             }
 
+            VStack(spacing: 4) {
+                CapsuleBar(pct: Pet.stageProgress(pet), fill: Theme.gold, track: .white.opacity(0.12), height: 8)
+                Text("\(Pet.petXP(pet)) XP · feed +20 · step goal +30")
+                    .font(.system(size: 11))
+                    .foregroundStyle(.white.opacity(0.5))
+            }
+            .padding(.horizontal, 60)
+
             if !Pet.trainedToday(pet) {
                 Text("Hit your step goal to train \(pet.name) 👟")
                     .font(.system(size: 12))

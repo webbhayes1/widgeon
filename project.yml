@@ -25,6 +25,7 @@ targets:
       properties:
         UILaunchScreen: {}
         CFBundleDisplayName: Widgeon
+        UIAppFonts: [InstrumentSerif-Regular.ttf, InstrumentSerif-Italic.ttf]
         NSHealthShareUsageDescription: Widgeon reads your step count to show progress toward your daily step goal on your widgets.
         NSHealthUpdateUsageDescription: Widgeon never writes health data.
     settings:
@@ -50,6 +51,7 @@ targets:
       path: Widgets/Info.plist
       properties:
         CFBundleDisplayName: Widgeon Widgets
+        UIAppFonts: [InstrumentSerif-Regular.ttf, InstrumentSerif-Italic.ttf]
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
     entitlements:

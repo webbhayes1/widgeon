@@ -1,7 +1,7 @@
 import Foundation
 
 struct PetStage {
-    let minFeeds: Int
+    let minXP: Int
     let emoji: String
     let title: String
 }
@@ -24,64 +24,64 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
     var stages: [PetStage] {
         switch self {
         case .duck: return [
-            .init(minFeeds: 0, emoji: "🥚", title: "A mysterious egg"),
-            .init(minFeeds: 1, emoji: "🐣", title: "Hatchling"),
-            .init(minFeeds: 3, emoji: "🐤", title: "Duckling"),
-            .init(minFeeds: 7, emoji: "🐥", title: "Big duckling"),
-            .init(minFeeds: 14, emoji: "🦆", title: "Proper duck"),
-            .init(minFeeds: 30, emoji: "🦆", title: "✨ Radiant duck"),
-            .init(minFeeds: 60, emoji: "🦆", title: "🎩 Distinguished duck"),
-            .init(minFeeds: 100, emoji: "🦆", title: "👑 Duck royalty"),
+            .init(minXP: 0, emoji: "🥚", title: "A mysterious egg"),
+            .init(minXP: 20, emoji: "🐣", title: "Hatchling"),
+            .init(minXP: 100, emoji: "🐤", title: "Duckling"),
+            .init(minXP: 250, emoji: "🐥", title: "Big duckling"),
+            .init(minXP: 500, emoji: "🦆", title: "Proper duck"),
+            .init(minXP: 900, emoji: "🦆", title: "✨ Radiant duck"),
+            .init(minXP: 1500, emoji: "🦆", title: "🎩 Distinguished duck"),
+            .init(minXP: 2500, emoji: "🦆", title: "👑 Duck royalty"),
         ]
         case .cat: return [
-            .init(minFeeds: 0, emoji: "🥚", title: "A suspicious egg"),
-            .init(minFeeds: 1, emoji: "🐱", title: "Kitten"),
-            .init(minFeeds: 3, emoji: "😸", title: "Playful kitten"),
-            .init(minFeeds: 7, emoji: "😺", title: "Happy cat"),
-            .init(minFeeds: 14, emoji: "🐈", title: "Proper cat"),
-            .init(minFeeds: 30, emoji: "🐈‍⬛", title: "✨ Mystic cat"),
-            .init(minFeeds: 60, emoji: "😼", title: "🎩 Distinguished cat"),
-            .init(minFeeds: 100, emoji: "🐅", title: "👑 Apex feline"),
+            .init(minXP: 0, emoji: "🥚", title: "A suspicious egg"),
+            .init(minXP: 20, emoji: "🐱", title: "Kitten"),
+            .init(minXP: 100, emoji: "😸", title: "Playful kitten"),
+            .init(minXP: 250, emoji: "😺", title: "Happy cat"),
+            .init(minXP: 500, emoji: "🐈", title: "Proper cat"),
+            .init(minXP: 900, emoji: "🐈‍⬛", title: "✨ Mystic cat"),
+            .init(minXP: 1500, emoji: "😼", title: "🎩 Distinguished cat"),
+            .init(minXP: 2500, emoji: "🐅", title: "👑 Apex feline"),
         ]
         case .dog: return [
-            .init(minFeeds: 0, emoji: "🥚", title: "A wiggly egg"),
-            .init(minFeeds: 1, emoji: "🐶", title: "Puppy"),
-            .init(minFeeds: 3, emoji: "🐕", title: "Growing pup"),
-            .init(minFeeds: 7, emoji: "🐕", title: "Good dog"),
-            .init(minFeeds: 14, emoji: "🦮", title: "Very good dog"),
-            .init(minFeeds: 30, emoji: "🐕‍🦺", title: "✨ Best in show"),
-            .init(minFeeds: 60, emoji: "🐩", title: "🎩 Distinguished dog"),
-            .init(minFeeds: 100, emoji: "🐺", title: "👑 Alpha wolf"),
+            .init(minXP: 0, emoji: "🥚", title: "A wiggly egg"),
+            .init(minXP: 20, emoji: "🐶", title: "Puppy"),
+            .init(minXP: 100, emoji: "🐕", title: "Growing pup"),
+            .init(minXP: 250, emoji: "🐕", title: "Good dog"),
+            .init(minXP: 500, emoji: "🦮", title: "Very good dog"),
+            .init(minXP: 900, emoji: "🐕‍🦺", title: "✨ Best in show"),
+            .init(minXP: 1500, emoji: "🐩", title: "🎩 Distinguished dog"),
+            .init(minXP: 2500, emoji: "🐺", title: "👑 Alpha wolf"),
         ]
         case .turtle: return [
-            .init(minFeeds: 0, emoji: "🥚", title: "A patient egg"),
-            .init(minFeeds: 1, emoji: "🐢", title: "Hatchling"),
-            .init(minFeeds: 3, emoji: "🐢", title: "Tiny turtle"),
-            .init(minFeeds: 7, emoji: "🐢", title: "Steady turtle"),
-            .init(minFeeds: 14, emoji: "🐢", title: "Proper turtle"),
-            .init(minFeeds: 30, emoji: "🐢", title: "✨ Wise turtle"),
-            .init(minFeeds: 60, emoji: "🐢", title: "🎩 Elder turtle"),
-            .init(minFeeds: 100, emoji: "🐉", title: "👑 Ancient dragon"),
+            .init(minXP: 0, emoji: "🥚", title: "A patient egg"),
+            .init(minXP: 20, emoji: "🐢", title: "Hatchling"),
+            .init(minXP: 100, emoji: "🐢", title: "Tiny turtle"),
+            .init(minXP: 250, emoji: "🐢", title: "Steady turtle"),
+            .init(minXP: 500, emoji: "🐢", title: "Proper turtle"),
+            .init(minXP: 900, emoji: "🐢", title: "✨ Wise turtle"),
+            .init(minXP: 1500, emoji: "🐢", title: "🎩 Elder turtle"),
+            .init(minXP: 2500, emoji: "🐉", title: "👑 Ancient dragon"),
         ]
         case .plant: return [
-            .init(minFeeds: 0, emoji: "🌰", title: "A hopeful seed"),
-            .init(minFeeds: 1, emoji: "🌱", title: "Sprout"),
-            .init(minFeeds: 3, emoji: "🌿", title: "Seedling"),
-            .init(minFeeds: 7, emoji: "🪴", title: "Potted & proud"),
-            .init(minFeeds: 14, emoji: "🌳", title: "Young tree"),
-            .init(minFeeds: 30, emoji: "🌸", title: "✨ In bloom"),
-            .init(minFeeds: 60, emoji: "🌺", title: "🎩 Show-stopper"),
-            .init(minFeeds: 100, emoji: "🌻", title: "👑 Garden royalty"),
+            .init(minXP: 0, emoji: "🌰", title: "A hopeful seed"),
+            .init(minXP: 20, emoji: "🌱", title: "Sprout"),
+            .init(minXP: 100, emoji: "🌿", title: "Seedling"),
+            .init(minXP: 250, emoji: "🪴", title: "Potted & proud"),
+            .init(minXP: 500, emoji: "🌳", title: "Young tree"),
+            .init(minXP: 900, emoji: "🌸", title: "✨ In bloom"),
+            .init(minXP: 1500, emoji: "🌺", title: "🎩 Show-stopper"),
+            .init(minXP: 2500, emoji: "🌻", title: "👑 Garden royalty"),
         ]
         case .pixel: return [
-            .init(minFeeds: 0, emoji: "🥚", title: "A glitchy egg"),
-            .init(minFeeds: 1, emoji: "👾", title: "8-bit blob"),
-            .init(minFeeds: 3, emoji: "👾", title: "16-bit critter"),
-            .init(minFeeds: 7, emoji: "👾", title: "32-bit creature"),
-            .init(minFeeds: 14, emoji: "👾", title: "64-bit being"),
-            .init(minFeeds: 30, emoji: "👾", title: "✨ HD remaster"),
-            .init(minFeeds: 60, emoji: "👾", title: "🎩 Ray-traced"),
-            .init(minFeeds: 100, emoji: "👾", title: "👑 Final boss"),
+            .init(minXP: 0, emoji: "🥚", title: "A glitchy egg"),
+            .init(minXP: 20, emoji: "👾", title: "8-bit blob"),
+            .init(minXP: 100, emoji: "👾", title: "16-bit critter"),
+            .init(minXP: 250, emoji: "👾", title: "32-bit creature"),
+            .init(minXP: 500, emoji: "👾", title: "64-bit being"),
+            .init(minXP: 900, emoji: "👾", title: "✨ HD remaster"),
+            .init(minXP: 1500, emoji: "👾", title: "🎩 Ray-traced"),
+            .init(minXP: 2500, emoji: "👾", title: "👑 Final boss"),
         ]
         }
     }
@@ -98,6 +98,9 @@ struct PetState: Codable {
     // backward-compatible decoding of previously saved states.
     var lastTrained: String? = nil
     var trainedDays: Int? = 0
+    // Pet XP drives evolution (feed +20, train +30). Optional for
+    // back-compat; nil migrates from feeds/trainedDays on read.
+    var xp: Int? = nil
 }
 
 enum Pet {
@@ -117,11 +120,25 @@ enum Pet {
         }
     }
 
+    static func petXP(_ state: PetState) -> Int {
+        state.xp ?? (state.feeds * 20 + (state.trainedDays ?? 0) * 30)
+    }
+
     static func stage(for state: PetState) -> PetStage {
         let stages = state.character.stages
+        let xp = petXP(state)
         var current = stages[0]
-        for s in stages where state.feeds >= s.minFeeds { current = s }
+        for s in stages where xp >= s.minXP { current = s }
         return current
+    }
+
+    /// Progress toward the next evolution stage, 0...1 (1 at final stage).
+    static func stageProgress(_ state: PetState) -> Double {
+        let stages = state.character.stages
+        let xp = petXP(state)
+        guard let next = stages.first(where: { $0.minXP > xp }) else { return 1 }
+        let currentMin = stage(for: state).minXP
+        return Double(xp - currentMin) / Double(next.minXP - currentMin)
     }
 
     static func fedToday(_ state: PetState) -> Bool {
@@ -140,6 +157,7 @@ enum Pet {
         state.best = max(state.best, state.streak)
         state.feeds += 1
         state.lastFed = today
+        state.xp = petXP(state) + 20
         XP.award("pet.feed", 20)
         return true
     }
@@ -155,6 +173,7 @@ enum Pet {
         guard state.lastTrained != today else { return }
         state.lastTrained = today
         state.trainedDays = (state.trainedDays ?? 0) + 1
+        state.xp = petXP(state) + 30
         save(state)
         XP.award("pet.train", 30)
     }

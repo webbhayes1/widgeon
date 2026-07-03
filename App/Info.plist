@@ -24,6 +24,11 @@
 	<string>Widgeon reads your step count to show progress toward your daily step goal on your widgets.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Widgeon never writes health data.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>InstrumentSerif-Regular.ttf</string>
+		<string>InstrumentSerif-Italic.ttf</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 </dict>
