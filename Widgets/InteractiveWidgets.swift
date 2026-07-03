@@ -8,7 +8,7 @@ struct PetWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "pet", provider: FrequentProvider()) { entry in
             PetWidgetView(entry: entry)
-                .containerBackground(for: .widget) { Color(hex: 0x12261A) }
+                .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Widge Pet")
         .description("A creature on your lock screen. Feed it daily, watch it evolve.")
@@ -21,6 +21,7 @@ struct PetWidgetView: View {
     let entry: DayEntry
 
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let state = Pet.load()
         let stage = Pet.stage(for: state)
         let fed = Pet.fedToday(state)
@@ -63,7 +64,7 @@ struct PetWidgetView: View {
             VStack(spacing: 4) {
                 Text(state.name.uppercased() + streakBadge)
                     .font(.system(size: 10, weight: .semibold))
-                    .foregroundStyle(Color(hex: 0x8EE6A5))
+                    .foregroundStyle(p.gold)
                 Spacer(minLength: 0)
                 Button(intent: FeedPetIntent()) {
                     Text(stage.emoji)
@@ -73,11 +74,11 @@ struct PetWidgetView: View {
                 Spacer(minLength: 0)
                 Text(mood)
                     .font(.system(size: family == .systemSmall ? 11 : 14, weight: .medium))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(p.ink)
                     .lineLimit(1)
                 Text(state.feeds > 0 ? "Day \(state.feeds) · \(stage.title)" : "Feed it daily. See what happens.")
                     .font(.system(size: family == .systemSmall ? 9 : 11))
-                    .foregroundStyle(.white.opacity(0.6))
+                    .foregroundStyle(p.muted)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
             }
@@ -92,9 +93,7 @@ struct DrinkWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "drink", provider: FrequentProvider()) { entry in
             DrinkWidgetView(entry: entry)
-                .containerBackground(for: .widget) {
-                    Color(hex: Drink.isLimit ? 0x2B1420 : 0x0C2233)
-                }
+                .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Drink Counter")
         .description("Count water toward a goal — or count drinks against a limit on a night out.")
@@ -106,14 +105,16 @@ struct DrinkWidgetView: View {
     @Environment(\.widgetFamily) private var family
     let entry: DayEntry
 
+    /// Over-limit warning stays red regardless of palette (semantic).
+    private let warn = Color(hex: 0xFF5C7A)
+
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let state = Drink.load()
         let target = Drink.target
         let over = Drink.isLimit && state.count >= target
         let pct = Double(state.count) / Double(target)
-        let accent: Color = Drink.isLimit
-            ? (over ? Color(hex: 0xFF5C7A) : Color(hex: 0xFFB35C))
-            : Color(hex: 0x5CC8FF)
+        let accent: Color = over ? warn : p.gold
 
         switch family {
         case .accessoryInline:
@@ -167,17 +168,17 @@ struct DrinkWidgetView: View {
                 }
                 Spacer(minLength: 0)
                 Text("\(state.count) / \(target)")
-                    .font(.system(size: family == .systemSmall ? 30 : 40, weight: .bold))
-                    .foregroundStyle(over ? Color(hex: 0xFF5C7A) : .white)
+                    .font(Theme.serif(family == .systemSmall ? 38 : 50))
+                    .foregroundStyle(over ? warn : p.ink)
                 CapsuleBar(
                     pct: pct,
                     fill: accent,
-                    track: .white.opacity(0.12),
+                    track: p.ink.opacity(0.12),
                     height: family == .systemSmall ? 10 : 12
                 )
                 Text(Drink.status(state))
                     .font(.system(size: family == .systemSmall ? 10 : 12))
-                    .foregroundStyle(.white.opacity(0.7))
+                    .foregroundStyle(p.muted)
                     .lineLimit(2)
                 Spacer(minLength: 0)
             }
@@ -192,7 +193,7 @@ struct StepsWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "steps", provider: FrequentProvider()) { entry in
             StepsWidgetView(entry: entry)
-                .containerBackground(for: .widget) { Color(hex: 0x102015) }
+                .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Step Tracker")
         .description("Today's steps against your goal, from Apple Health.")
@@ -205,11 +206,11 @@ struct StepsWidgetView: View {
     let entry: DayEntry
 
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let steps = StepsManager.cachedSteps()
         let goal = StepsManager.goal
         let pct = Double(steps) / Double(goal)
         let done = steps >= goal
-        let accent = Color(hex: done ? 0x7CFFA5 : 0x5CFF8F)
 
         switch family {
         case .accessoryInline:
@@ -238,20 +239,20 @@ struct StepsWidgetView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         default:
             VStack(alignment: .leading, spacing: 6) {
-                WidgetHeader(text: "👟 STEPS", color: accent)
+                WidgetHeader(text: "👟 STEPS", color: p.gold)
                 Spacer(minLength: 0)
                 Text(steps.formatted())
-                    .font(.system(size: family == .systemSmall ? 30 : 40, weight: .bold))
-                    .foregroundStyle(.white)
+                    .font(Theme.serif(family == .systemSmall ? 38 : 50))
+                    .foregroundStyle(p.ink)
                 CapsuleBar(
                     pct: pct,
-                    fill: accent,
-                    track: .white.opacity(0.12),
+                    fill: p.gold,
+                    track: p.ink.opacity(0.12),
                     height: family == .systemSmall ? 10 : 12
                 )
                 Text(done ? "Goal crushed. Victory lap? 🏆" : "\((goal - steps).formatted()) to go · goal \(goal.formatted())")
                     .font(.system(size: family == .systemSmall ? 10 : 12))
-                    .foregroundStyle(.white.opacity(0.7))
+                    .foregroundStyle(p.muted)
                     .lineLimit(2)
                 Spacer(minLength: 0)
             }

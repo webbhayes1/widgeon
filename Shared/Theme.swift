@@ -50,6 +50,18 @@ enum Theme {
         return (t >= 6.5 && t < 18.5) ? day : night
     }
 
+    /// The next 6:30 AM/PM day↔night boundary strictly after `date`.
+    /// Widgets emit a timeline entry here so the palette flips on schedule.
+    static func nextFlip(after date: Date = Date()) -> Date {
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        // 6:30 today, 18:30 today, 6:30 tomorrow (30.5h).
+        for hours in [6.5, 18.5, 30.5] {
+            let candidate = startOfDay.addingTimeInterval(hours * 3600)
+            if candidate > date { return candidate }
+        }
+        return startOfDay.addingTimeInterval(30.5 * 3600)
+    }
+
     static func serif(_ size: CGFloat, italic: Bool = false) -> Font {
         .custom(italic ? "InstrumentSerif-Italic" : "InstrumentSerif-Regular", size: size)
     }
@@ -93,5 +105,17 @@ struct WidgetHeader: View {
         Text(text)
             .font(.system(size: 10, weight: .semibold))
             .foregroundStyle(color)
+    }
+}
+
+/// The brand day/night gradient used behind screens and home-screen widgets.
+struct BrandBackground: View {
+    var palette: Palette = Theme.palette()
+
+    var body: some View {
+        LinearGradient(
+            colors: [palette.baseTop, palette.base],
+            startPoint: .top, endPoint: .bottom
+        )
     }
 }

@@ -20,8 +20,8 @@ One app bundling daily-reset widgets around a lock-screen pet. Strategy (decided
 ## Design handoff (from claude.ai Claude Design)
 Source: `~/Downloads/Widgeon Daily Ritual App.zip` (README + HTML prototype; pixel sprite data embedded in the HTML as string arrays). Tokens: gold #FFC44D on navy #0B0D24; **day/night flip at 6:30am/pm** (day: mint #E7F5EC→#F3F8E6, ink #183A2A, accent #22A868); Instrument Serif (bundled) for display type.
 - Phase 1 DONE (commit e6bf853): Palette struct in `Shared/Theme.swift`, fonts bundled, XP evolution.
-- **Phase 2 (next): re-skin all app views + widget views to the new palette/serif** — screens still wear the old placeholder colors; unify accents to gold, use `Theme.palette()` day/night.
-- Phase 3: pixel sprite engine — port sprites from the handoff HTML to SwiftUI Canvas (replaces emoji; the Tamagotchi look).
+- Phase 2 DONE (uncommitted): all app + widget views re-skinned to `Theme.palette()` day/night + Instrument Serif display type, accents unified to gold. `Theme.nextFlip(after:)` + `BrandBackground`; `DailyProvider` emits a timeline entry at each 6:30 flip so home-screen widgets flip on schedule (accessory/lock widgets are system-tinted, left as-is). Settings uses a custom serif header (system large title can't be recolored on a transparent scroll-edge nav bar).
+- **Phase 3 (next): pixel sprite engine** — port sprites from the handoff HTML to SwiftUI Canvas (replaces emoji; the Tamagotchi look).
 - Phase 4: meadow as Pet-screen live background (dawn→night sky) + countdown lock widget. (Full-screen live lock wallpaper is impossible on iOS — decided adaptation.)
 - Then: train card UI, heart particles, evolution celebration banner.
 

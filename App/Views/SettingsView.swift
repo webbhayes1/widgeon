@@ -14,8 +14,17 @@ struct SettingsView: View {
         return ts > 0 ? Date(timeIntervalSince1970: ts) : Date(timeIntervalSince1970: 852_076_800) // 1997-01-01
     }()
 
+    private let p = Theme.palette()
+
     var body: some View {
         NavigationStack {
+            VStack(alignment: .leading, spacing: 0) {
+                Text("Settings")
+                    .font(Theme.serif(44))
+                    .foregroundStyle(p.ink)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 12)
+                    .padding(.bottom, 4)
             Form {
                 Section("Pet") {
                     TextField("Name", text: $pet.name)
@@ -25,6 +34,7 @@ struct SettingsView: View {
                         }
                     }
                 }
+                .listRowBackground(p.cardBG)
 
                 Section("Drink counter") {
                     TextField("Label", text: $drinkLabel)
@@ -33,9 +43,10 @@ struct SettingsView: View {
                     if drinkIsLimit {
                         Text("Counts against a limit instead of toward a goal, and the day resets at 6 AM instead of midnight.")
                             .font(.footnote)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(p.muted)
                     }
                 }
+                .listRowBackground(p.cardBG)
 
                 Section("Daily wisdom") {
                     Picker("Tradition", selection: $wisdomTradition) {
@@ -45,12 +56,14 @@ struct SettingsView: View {
                     }
                     Text("More traditions (Quran, Dhammapada, Bhagavad Gita, Tao Te Ching) coming soon.")
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(p.muted)
                 }
+                .listRowBackground(p.cardBG)
 
                 Section("Steps") {
                     Stepper("Daily goal: \(stepGoal.formatted())", value: $stepGoal, in: 1000...40000, step: 500)
                 }
+                .listRowBackground(p.cardBG)
 
                 Section("Life progress") {
                     Toggle("Life mode (vs. year mode)", isOn: $lifeMode)
@@ -58,16 +71,25 @@ struct SettingsView: View {
                         DatePicker("Birthday", selection: $birthday, displayedComponents: .date)
                     }
                 }
+                .listRowBackground(p.cardBG)
 
                 Section {
                     Button("Apply & refresh widgets") {
                         save()
                     }
                     .frame(maxWidth: .infinity)
+                    .foregroundStyle(p.gold)
+                    .fontWeight(.semibold)
                 }
+                .listRowBackground(p.cardBG)
             }
-            .navigationTitle("Settings")
+            .foregroundStyle(p.ink)
+            .scrollContentBackground(.hidden)
+            }
+            .background(BrandBackground(palette: p).ignoresSafeArea())
+            .toolbar(.hidden, for: .navigationBar)
         }
+        .tint(p.accent)
     }
 
     private func save() {

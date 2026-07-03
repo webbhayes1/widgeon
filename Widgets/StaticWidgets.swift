@@ -7,7 +7,7 @@ struct VocabWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "vocab", provider: DailyProvider()) { entry in
             VocabWidgetView(entry: entry)
-                .containerBackground(for: .widget) { Color(hex: 0x1C1C1E) }
+                .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Daily Vocab")
         .description("A new word every midnight — smart, usable, never repeats for 500 days.")
@@ -20,6 +20,7 @@ struct VocabWidgetView: View {
     let entry: DayEntry
 
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let word = DailyPick.vocab(for: entry.date)
         switch family {
         case .accessoryInline:
@@ -38,24 +39,24 @@ struct VocabWidgetView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         default:
             VStack(alignment: .leading, spacing: 4) {
-                WidgetHeader(text: "WORD OF THE DAY", color: Color(hex: 0xC8B57E))
+                WidgetHeader(text: "WORD OF THE DAY", color: p.gold)
                 Spacer(minLength: 2)
                 Text(word.w)
-                    .font(.system(size: family == .systemSmall ? 20 : 26, weight: .bold, design: .serif))
-                    .foregroundStyle(.white)
+                    .font(Theme.serif(family == .systemSmall ? 24 : 30))
+                    .foregroundStyle(p.ink)
                     .lineLimit(1)
                     .minimumScaleFactor(0.6)
                 Text(word.p)
-                    .font(.system(size: 11).italic())
-                    .foregroundStyle(.white.opacity(0.6))
+                    .font(Theme.serif(13, italic: true))
+                    .foregroundStyle(p.muted)
                 Text(word.d)
                     .font(.system(size: family == .systemSmall ? 12 : 14))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(p.ink)
                     .lineLimit(family == .systemSmall ? 3 : 2)
                 if family != .systemSmall {
                     Text("“\(word.e)”")
-                        .font(.system(size: 12).italic())
-                        .foregroundStyle(.white.opacity(0.65))
+                        .font(Theme.serif(13, italic: true))
+                        .foregroundStyle(p.muted)
                         .lineLimit(2)
                 }
                 Spacer(minLength: 0)
@@ -73,10 +74,9 @@ struct RoastWidget: Widget {
             LineWidgetView(
                 entry: entry,
                 header: "🔥 DAILY ROAST",
-                accent: Color(hex: 0xFF6B35),
                 line: { DailyPick.roast(for: $0) }
             )
-            .containerBackground(for: .widget) { Color(hex: 0x1A1A1A) }
+            .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Daily Roast")
         .description("Tough-love motivation, one line a day.")
@@ -92,10 +92,9 @@ struct AffirmationWidget: Widget {
             LineWidgetView(
                 entry: entry,
                 header: "🌤 TODAY'S AFFIRMATION",
-                accent: Color(hex: 0x7FD4C1),
                 line: { DailyPick.affirmation(for: $0) }
             )
-            .containerBackground(for: .widget) { Color(hex: 0x0E2A2F) }
+            .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Daily Affirmation")
         .description("One first-person affirmation per day.")
@@ -108,10 +107,10 @@ struct LineWidgetView: View {
     @Environment(\.widgetFamily) private var family
     let entry: DayEntry
     let header: String
-    let accent: Color
     let line: (Date) -> String
 
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let text = line(entry.date)
         switch family {
         case .accessoryInline:
@@ -129,11 +128,11 @@ struct LineWidgetView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         default:
             VStack(alignment: .leading, spacing: 6) {
-                WidgetHeader(text: header, color: accent)
+                WidgetHeader(text: header, color: p.gold)
                 Spacer(minLength: 0)
                 Text(text)
                     .font(.system(size: family == .systemSmall ? 14 : 18, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(p.ink)
                     .lineLimit(family == .systemSmall ? 5 : 4)
                     .minimumScaleFactor(0.7)
                 Spacer(minLength: 0)
@@ -149,12 +148,7 @@ struct LifeProgressWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "life", provider: DailyProvider()) { entry in
             LifeProgressView(entry: entry)
-                .containerBackground(for: .widget) {
-                    LinearGradient(
-                        colors: [Color(hex: 0x0D0D1F), Color(hex: 0x2A1B4A)],
-                        startPoint: .top, endPoint: .bottom
-                    )
-                }
+                .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Life Progress")
         .description("How much of the year — or your life — is already gone.")
@@ -194,6 +188,7 @@ struct LifeProgressView: View {
     }
 
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let data = compute()
         let pctText = String(format: "%.1f%%", data.pct * 100)
 
@@ -225,21 +220,21 @@ struct LifeProgressView: View {
             VStack(alignment: .leading, spacing: 6) {
                 WidgetHeader(
                     text: data.label == "LIFE" ? "⏳ LIFE PROGRESS" : "⏳ YEAR PROGRESS",
-                    color: Color(hex: 0x9B8CFF)
+                    color: p.gold
                 )
                 Spacer(minLength: 0)
                 Text(pctText)
-                    .font(.system(size: family == .systemSmall ? 32 : 40, weight: .bold))
-                    .foregroundStyle(.white)
+                    .font(Theme.serif(family == .systemSmall ? 40 : 52))
+                    .foregroundStyle(p.ink)
                 CapsuleBar(
                     pct: data.pct,
-                    fill: Color(hex: 0x9B8CFF),
-                    track: .white.opacity(0.12),
+                    fill: p.gold,
+                    track: p.ink.opacity(0.12),
                     height: family == .systemSmall ? 10 : 12
                 )
                 Text(data.footer)
                     .font(.system(size: family == .systemSmall ? 11 : 13))
-                    .foregroundStyle(.white.opacity(0.7))
+                    .foregroundStyle(p.muted)
                     .lineLimit(2)
                 Spacer(minLength: 0)
             }

@@ -9,10 +9,9 @@ struct FortuneWidget: Widget {
             LineWidgetView(
                 entry: entry,
                 header: "🎱 DAILY FORTUNE",
-                accent: Color(hex: 0xD48CFF),
                 line: { DailyPick.fortune(for: $0) }
             )
-            .containerBackground(for: .widget) { Color(hex: 0x1A1024) }
+            .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Daily Fortune")
         .description("One fortune per midnight. The 8-ball has spoken.")
@@ -26,7 +25,7 @@ struct WisdomWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "wisdom", provider: DailyProvider()) { entry in
             WisdomWidgetView(entry: entry)
-                .containerBackground(for: .widget) { Color(hex: 0x141210) }
+                .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Daily Wisdom")
         .description("A daily verse or philosophy passage — pick your tradition in the app.")
@@ -39,8 +38,8 @@ struct WisdomWidgetView: View {
     let entry: DayEntry
 
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let wisdom = Wisdom.today(for: entry.date)
-        let cream = Color(hex: 0xE8DCC0)
 
         switch family {
         case .accessoryInline:
@@ -48,7 +47,7 @@ struct WisdomWidgetView: View {
         case .accessoryRectangular:
             VStack(alignment: .leading, spacing: 1) {
                 Text(wisdom.t)
-                    .font(.system(size: 12, weight: .medium, design: .serif))
+                    .font(Theme.serif(14))
                     .lineLimit(3)
                     .minimumScaleFactor(0.7)
                 Text(wisdom.c.uppercased())
@@ -59,17 +58,17 @@ struct WisdomWidgetView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         default:
             VStack(alignment: .leading, spacing: 8) {
-                WidgetHeader(text: "✦ DAILY WISDOM", color: cream)
+                WidgetHeader(text: "✦ DAILY WISDOM", color: p.gold)
                 Spacer(minLength: 0)
                 Text(wisdom.t)
-                    .font(.system(size: family == .systemSmall ? 13 : 16, weight: .medium, design: .serif))
-                    .foregroundStyle(.white)
+                    .font(Theme.serif(family == .systemSmall ? 17 : 20))
+                    .foregroundStyle(p.ink)
                     .lineLimit(family == .systemSmall ? 6 : 4)
                     .minimumScaleFactor(0.7)
                 Text(wisdom.c.uppercased())
                     .font(.system(size: 10, weight: .semibold))
                     .kerning(1.2)
-                    .foregroundStyle(cream.opacity(0.8))
+                    .foregroundStyle(p.gold.opacity(0.9))
                 Spacer(minLength: 0)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -83,7 +82,7 @@ struct XPWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: "xp", provider: FrequentProvider()) { entry in
             XPWidgetView(entry: entry)
-                .containerBackground(for: .widget) { Color(hex: 0x1F1A08) }
+                .containerBackground(for: .widget) { BrandBackground(palette: Theme.palette(for: entry.date)) }
         }
         .configurationDisplayName("Life XP")
         .description("Feed the pet, hit your steps, finish your water — level up your life.")
@@ -96,9 +95,9 @@ struct XPWidgetView: View {
     let entry: DayEntry
 
     var body: some View {
+        let p = Theme.palette(for: entry.date)
         let level = XP.level
         let progress = XP.levelProgress
-        let accent = Color(hex: 0xFFD34D)
 
         switch family {
         case .accessoryInline:
@@ -124,20 +123,20 @@ struct XPWidgetView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         default:
             VStack(alignment: .leading, spacing: 6) {
-                WidgetHeader(text: "⭐ LIFE XP", color: accent)
+                WidgetHeader(text: "⭐ LIFE XP", color: p.gold)
                 Spacer(minLength: 0)
                 Text("LVL \(level)")
-                    .font(.system(size: family == .systemSmall ? 32 : 42, weight: .heavy))
-                    .foregroundStyle(.white)
+                    .font(Theme.serif(family == .systemSmall ? 40 : 52))
+                    .foregroundStyle(p.ink)
                 CapsuleBar(
                     pct: progress,
-                    fill: accent,
-                    track: .white.opacity(0.12),
+                    fill: p.gold,
+                    track: p.ink.opacity(0.12),
                     height: family == .systemSmall ? 10 : 12
                 )
                 Text("\(XP.total.formatted()) XP · \(XP.toNextLevel.formatted()) to Level \(level + 1)")
                     .font(.system(size: family == .systemSmall ? 10 : 12))
-                    .foregroundStyle(.white.opacity(0.7))
+                    .foregroundStyle(p.muted)
                     .lineLimit(2)
                 Spacer(minLength: 0)
             }

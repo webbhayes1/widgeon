@@ -8,13 +8,13 @@ struct PetView: View {
     @State private var draftCharacter: PetCharacter = .duck
     @State private var editing = false
 
+    private let p = Theme.palette()
+    /// Dark text that reads on the gold action buttons in both modes.
+    private var onGold: Color { p.isDay ? p.ink : p.base }
+
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [Color(hex: 0x0B1F14), Color(hex: 0x123324)],
-                startPoint: .top, endPoint: .bottom
-            )
-            .ignoresSafeArea()
+            BrandBackground(palette: p).ignoresSafeArea()
 
             if pet.feeds == 0 {
                 onboarding
@@ -38,11 +38,11 @@ struct PetView: View {
             Text("🥚")
                 .font(.system(size: 80))
             Text("Meet your pet")
-                .font(.system(size: 32, weight: .heavy))
-                .foregroundStyle(.white)
+                .font(Theme.serif(40))
+                .foregroundStyle(p.ink)
             Text("Name it, pick a character, and feed it every day to watch it evolve.")
                 .font(.system(size: 15))
-                .foregroundStyle(.white.opacity(0.6))
+                .foregroundStyle(p.muted)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
 
@@ -50,8 +50,9 @@ struct PetView: View {
                 .font(.system(size: 18, weight: .semibold))
                 .multilineTextAlignment(.center)
                 .padding(14)
-                .background(RoundedRectangle(cornerRadius: 16).fill(.white.opacity(0.08)))
-                .foregroundStyle(.white)
+                .background(RoundedRectangle(cornerRadius: 16).fill(p.cardBG))
+                .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(p.cardBorder))
+                .foregroundStyle(p.ink)
                 .padding(.horizontal, 40)
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 3), spacing: 12) {
@@ -64,19 +65,19 @@ struct PetView: View {
                                 .font(.system(size: 38))
                             Text(c.displayName)
                                 .font(.system(size: 11, weight: .semibold))
-                                .foregroundStyle(.white.opacity(0.8))
+                                .foregroundStyle(p.ink.opacity(0.85))
                         }
                         .frame(maxWidth: .infinity)
                         .frame(height: 84)
                         .background(
                             RoundedRectangle(cornerRadius: 18)
-                                .fill(.white.opacity(draftCharacter == c ? 0.16 : 0.05))
+                                .fill(draftCharacter == c ? p.gold.opacity(0.18) : p.cardBG)
                         )
                         .overlay(
                             RoundedRectangle(cornerRadius: 18)
                                 .strokeBorder(
-                                    draftCharacter == c ? Theme.petGreen : .clear,
-                                    lineWidth: 2
+                                    draftCharacter == c ? p.gold : p.cardBorder,
+                                    lineWidth: draftCharacter == c ? 2 : 1
                                 )
                         )
                     }
@@ -99,10 +100,10 @@ struct PetView: View {
             } label: {
                 Text(draftCharacter == .plant ? "Plant it 🌱" : "Hatch it 🐣")
                     .font(.system(size: 18, weight: .bold))
-                    .foregroundStyle(Color(hex: 0x0B1F14))
+                    .foregroundStyle(onGold)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(Capsule().fill(Theme.petGreen))
+                    .background(Capsule().fill(p.gold))
             }
             .padding(.horizontal, 40)
             .padding(.bottom, 30)
@@ -118,8 +119,8 @@ struct PetView: View {
         return VStack(spacing: 14) {
             HStack {
                 Text(pet.name)
-                    .font(.system(size: 30, weight: .heavy))
-                    .foregroundStyle(.white)
+                    .font(Theme.serif(38))
+                    .foregroundStyle(p.ink)
                 Spacer()
                 Button {
                     draftName = pet.name
@@ -128,7 +129,7 @@ struct PetView: View {
                 } label: {
                     Image(systemName: "pencil.circle.fill")
                         .font(.system(size: 26))
-                        .foregroundStyle(.white.opacity(0.5))
+                        .foregroundStyle(p.muted)
                 }
             }
             .padding(.horizontal, 24)
@@ -138,7 +139,7 @@ struct PetView: View {
 
             Text(stage.emoji)
                 .font(.system(size: 140))
-                .shadow(color: Theme.petGreen.opacity(0.35), radius: 30)
+                .shadow(color: p.gold.opacity(0.35), radius: 30)
                 .rotationEffect(.degrees(dancing ? 12 : 0))
                 .offset(y: dancing ? -22 : 0)
                 .animation(
@@ -150,7 +151,7 @@ struct PetView: View {
 
             Text(stage.title)
                 .font(.system(size: 18, weight: .semibold))
-                .foregroundStyle(Theme.petGreen)
+                .foregroundStyle(p.gold)
 
             HStack(spacing: 10) {
                 statChip("Day \(pet.feeds)")
@@ -160,17 +161,17 @@ struct PetView: View {
             }
 
             VStack(spacing: 4) {
-                CapsuleBar(pct: Pet.stageProgress(pet), fill: Theme.gold, track: .white.opacity(0.12), height: 8)
+                CapsuleBar(pct: Pet.stageProgress(pet), fill: p.gold, track: p.ink.opacity(0.12), height: 8)
                 Text("\(Pet.petXP(pet)) XP · feed +20 · step goal +30")
                     .font(.system(size: 11))
-                    .foregroundStyle(.white.opacity(0.5))
+                    .foregroundStyle(p.muted)
             }
             .padding(.horizontal, 60)
 
             if !Pet.trainedToday(pet) {
                 Text("Hit your step goal to train \(pet.name) 👟")
                     .font(.system(size: 12))
-                    .foregroundStyle(.white.opacity(0.45))
+                    .foregroundStyle(p.muted)
             }
 
             Spacer()
@@ -185,17 +186,17 @@ struct PetView: View {
             } label: {
                 Text(fedToday ? "Fed today ✓" : "Feed \(pet.name) 🍞")
                     .font(.system(size: 18, weight: .bold))
-                    .foregroundStyle(fedToday ? .white.opacity(0.5) : Color(hex: 0x0B1F14))
+                    .foregroundStyle(fedToday ? p.muted : onGold)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
-                    .background(Capsule().fill(fedToday ? .white.opacity(0.1) : Theme.petGreen))
+                    .background(Capsule().fill(fedToday ? p.cardBG : p.gold))
             }
             .disabled(fedToday)
             .padding(.horizontal, 40)
 
             Text("🏆 Achievements — coming soon")
                 .font(.footnote)
-                .foregroundStyle(.white.opacity(0.35))
+                .foregroundStyle(p.muted.opacity(0.7))
                 .padding(.bottom, 24)
         }
     }
@@ -230,16 +231,18 @@ struct PetView: View {
                 }
             }
         }
+        .tint(p.accent)
         .presentationDetents([.medium])
     }
 
     private func statChip(_ text: String) -> some View {
         Text(text)
             .font(.system(size: 13, weight: .semibold))
-            .foregroundStyle(.white.opacity(0.85))
+            .foregroundStyle(p.ink.opacity(0.9))
             .padding(.horizontal, 14)
             .padding(.vertical, 7)
-            .background(Capsule().fill(.white.opacity(0.08)))
+            .background(Capsule().fill(p.cardBG))
+            .overlay(Capsule().strokeBorder(p.cardBorder))
     }
 
     private func celebrate() {
