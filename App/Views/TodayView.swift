@@ -32,6 +32,7 @@ struct TodayView: View {
                 vocabCard
                 roastCard
                 affirmationCard
+                wisdomCard
                 fortuneCard
                 stepsCard
             }
@@ -101,6 +102,19 @@ struct TodayView: View {
             Text(DailyPick.affirmation())
                 .font(.system(size: 18, weight: .medium))
                 .foregroundStyle(.white)
+        }
+    }
+
+    private var wisdomCard: some View {
+        let wisdom = Wisdom.today()
+        return Card(header: "✦ DAILY WISDOM", accent: Color(hex: 0xE8DCC0), bg: Color(hex: 0x141210)) {
+            Text(wisdom.t)
+                .font(.system(size: 17, weight: .medium, design: .serif))
+                .foregroundStyle(.white)
+            Text(wisdom.c.uppercased())
+                .font(.system(size: 11, weight: .semibold))
+                .kerning(1.2)
+                .foregroundStyle(Color(hex: 0xE8DCC0).opacity(0.8))
         }
     }
 

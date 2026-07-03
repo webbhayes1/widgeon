@@ -7,6 +7,7 @@ struct SettingsView: View {
     @State private var drinkTarget = Drink.target
     @State private var drinkIsLimit = Drink.isLimit
     @State private var stepGoal = StepsManager.goal
+    @State private var wisdomTradition = Wisdom.tradition
     @State private var lifeMode = SharedStore.defaults.bool(forKey: "life.mode")
     @State private var birthday: Date = {
         let ts = SharedStore.defaults.double(forKey: "life.birthday")
@@ -34,6 +35,17 @@ struct SettingsView: View {
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }
+                }
+
+                Section("Daily wisdom") {
+                    Picker("Tradition", selection: $wisdomTradition) {
+                        ForEach(WisdomTradition.allCases) { t in
+                            Text(t.displayName).tag(t)
+                        }
+                    }
+                    Text("More traditions (Quran, Dhammapada, Bhagavad Gita, Tao Te Ching) coming soon.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
 
                 Section("Steps") {
@@ -64,6 +76,7 @@ struct SettingsView: View {
         Drink.target = drinkTarget
         Drink.isLimit = drinkIsLimit
         StepsManager.goal = stepGoal
+        Wisdom.tradition = wisdomTradition
         SharedStore.defaults.set(lifeMode, forKey: "life.mode")
         SharedStore.defaults.set(birthday.timeIntervalSince1970, forKey: "life.birthday")
         WidgetCenter.shared.reloadAllTimelines()

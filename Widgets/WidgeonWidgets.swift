@@ -13,6 +13,7 @@ struct WidgeonWidgetBundle: WidgetBundle {
         PetWidget()
         FortuneWidget()
         XPWidget()
+        WisdomWidget()
     }
 }
 

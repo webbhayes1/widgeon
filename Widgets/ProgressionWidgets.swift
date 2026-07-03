@@ -20,6 +20,63 @@ struct FortuneWidget: Widget {
     }
 }
 
+// MARK: - Daily Wisdom (scripture or philosophy, user's choice, reverent & minimal)
+
+struct WisdomWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "wisdom", provider: DailyProvider()) { entry in
+            WisdomWidgetView(entry: entry)
+                .containerBackground(for: .widget) { Color(hex: 0x141210) }
+        }
+        .configurationDisplayName("Daily Wisdom")
+        .description("A daily verse or philosophy passage — pick your tradition in the app.")
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline])
+    }
+}
+
+struct WisdomWidgetView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: DayEntry
+
+    var body: some View {
+        let wisdom = Wisdom.today(for: entry.date)
+        let cream = Color(hex: 0xE8DCC0)
+
+        switch family {
+        case .accessoryInline:
+            Text("\(wisdom.t) — \(wisdom.c)")
+        case .accessoryRectangular:
+            VStack(alignment: .leading, spacing: 1) {
+                Text(wisdom.t)
+                    .font(.system(size: 12, weight: .medium, design: .serif))
+                    .lineLimit(3)
+                    .minimumScaleFactor(0.7)
+                Text(wisdom.c.uppercased())
+                    .font(.system(size: 8, weight: .semibold))
+                    .kerning(0.8)
+                    .opacity(0.65)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        default:
+            VStack(alignment: .leading, spacing: 8) {
+                WidgetHeader(text: "✦ DAILY WISDOM", color: cream)
+                Spacer(minLength: 0)
+                Text(wisdom.t)
+                    .font(.system(size: family == .systemSmall ? 13 : 16, weight: .medium, design: .serif))
+                    .foregroundStyle(.white)
+                    .lineLimit(family == .systemSmall ? 6 : 4)
+                    .minimumScaleFactor(0.7)
+                Text(wisdom.c.uppercased())
+                    .font(.system(size: 10, weight: .semibold))
+                    .kerning(1.2)
+                    .foregroundStyle(cream.opacity(0.8))
+                Spacer(minLength: 0)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+    }
+}
+
 // MARK: - Life XP (every ritual earns XP; your level lives on the lock screen)
 
 struct XPWidget: Widget {

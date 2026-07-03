@@ -12,6 +12,8 @@ enum ContentBank {
     static let roasts: [String] = load("roasts")
     static let affirmations: [String] = load("affirmations")
     static let fortunes: [String] = load("fortunes")
+    static let wisdomBible: [WisdomEntry] = load("wisdom_bible")
+    static let wisdomStoic: [WisdomEntry] = load("wisdom_stoic")
 
     private static func load<T: Decodable>(_ name: String) -> T {
         guard
