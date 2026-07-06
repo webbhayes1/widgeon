@@ -4,6 +4,8 @@ struct PetStage {
     let minXP: Int
     let emoji: String
     let title: String
+    /// Key into `PixelSprites.grids` — the pixel sprite for this stage.
+    let sprite: String
 }
 
 enum PetCharacter: String, CaseIterable, Codable, Identifiable {
@@ -24,64 +26,64 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
     var stages: [PetStage] {
         switch self {
         case .duck: return [
-            .init(minXP: 0, emoji: "🥚", title: "A mysterious egg"),
-            .init(minXP: 20, emoji: "🐣", title: "Hatchling"),
-            .init(minXP: 100, emoji: "🐤", title: "Duckling"),
-            .init(minXP: 250, emoji: "🐥", title: "Big duckling"),
-            .init(minXP: 500, emoji: "🦆", title: "Proper duck"),
-            .init(minXP: 900, emoji: "🦆", title: "✨ Radiant duck"),
-            .init(minXP: 1500, emoji: "🦆", title: "🎩 Distinguished duck"),
-            .init(minXP: 2500, emoji: "🦆", title: "👑 Duck royalty"),
+            .init(minXP: 0, emoji: "🥚", title: "A mysterious egg", sprite: "egg"),
+            .init(minXP: 20, emoji: "🐣", title: "Hatchling", sprite: "hatch"),
+            .init(minXP: 100, emoji: "🐤", title: "Duckling", sprite: "duckling"),
+            .init(minXP: 250, emoji: "🐥", title: "Big duckling", sprite: "duckB"),
+            .init(minXP: 500, emoji: "🦆", title: "Proper duck", sprite: "duckT"),
+            .init(minXP: 900, emoji: "🦆", title: "✨ Radiant duck", sprite: "duckA"),
+            .init(minXP: 1500, emoji: "🦆", title: "🎩 Distinguished duck", sprite: "noble"),
+            .init(minXP: 2500, emoji: "🦆", title: "👑 Duck royalty", sprite: "royal"),
         ]
         case .cat: return [
-            .init(minXP: 0, emoji: "🥚", title: "A suspicious egg"),
-            .init(minXP: 20, emoji: "🐱", title: "Kitten"),
-            .init(minXP: 100, emoji: "😸", title: "Playful kitten"),
-            .init(minXP: 250, emoji: "😺", title: "Happy cat"),
-            .init(minXP: 500, emoji: "🐈", title: "Proper cat"),
-            .init(minXP: 900, emoji: "🐈‍⬛", title: "✨ Mystic cat"),
-            .init(minXP: 1500, emoji: "😼", title: "🎩 Distinguished cat"),
-            .init(minXP: 2500, emoji: "🐅", title: "👑 Apex feline"),
+            .init(minXP: 0, emoji: "🥚", title: "A suspicious egg", sprite: "egg"),
+            .init(minXP: 20, emoji: "🐱", title: "Kitten", sprite: "kitten"),
+            .init(minXP: 100, emoji: "😸", title: "Playful kitten", sprite: "catB"),
+            .init(minXP: 250, emoji: "😺", title: "Happy cat", sprite: "catT"),
+            .init(minXP: 500, emoji: "🐈", title: "Proper cat", sprite: "catA"),
+            .init(minXP: 900, emoji: "🐈‍⬛", title: "✨ Mystic cat", sprite: "cat"),
+            .init(minXP: 1500, emoji: "😼", title: "🎩 Distinguished cat", sprite: "cat2"),
+            .init(minXP: 2500, emoji: "🐅", title: "👑 Apex feline", sprite: "cat2"),
         ]
         case .dog: return [
-            .init(minXP: 0, emoji: "🥚", title: "A wiggly egg"),
-            .init(minXP: 20, emoji: "🐶", title: "Puppy"),
-            .init(minXP: 100, emoji: "🐕", title: "Growing pup"),
-            .init(minXP: 250, emoji: "🐕", title: "Good dog"),
-            .init(minXP: 500, emoji: "🦮", title: "Very good dog"),
-            .init(minXP: 900, emoji: "🐕‍🦺", title: "✨ Best in show"),
-            .init(minXP: 1500, emoji: "🐩", title: "🎩 Distinguished dog"),
-            .init(minXP: 2500, emoji: "🐺", title: "👑 Alpha wolf"),
+            .init(minXP: 0, emoji: "🥚", title: "A wiggly egg", sprite: "egg"),
+            .init(minXP: 20, emoji: "🐶", title: "Puppy", sprite: "pup"),
+            .init(minXP: 100, emoji: "🐕", title: "Growing pup", sprite: "dogB"),
+            .init(minXP: 250, emoji: "🐕", title: "Good dog", sprite: "dogT"),
+            .init(minXP: 500, emoji: "🦮", title: "Very good dog", sprite: "dogA"),
+            .init(minXP: 900, emoji: "🐕‍🦺", title: "✨ Best in show", sprite: "dog"),
+            .init(minXP: 1500, emoji: "🐩", title: "🎩 Distinguished dog", sprite: "dog"),
+            .init(minXP: 2500, emoji: "🐺", title: "👑 Alpha wolf", sprite: "dog"),
         ]
         case .turtle: return [
-            .init(minXP: 0, emoji: "🥚", title: "A patient egg"),
-            .init(minXP: 20, emoji: "🐢", title: "Hatchling"),
-            .init(minXP: 100, emoji: "🐢", title: "Tiny turtle"),
-            .init(minXP: 250, emoji: "🐢", title: "Steady turtle"),
-            .init(minXP: 500, emoji: "🐢", title: "Proper turtle"),
-            .init(minXP: 900, emoji: "🐢", title: "✨ Wise turtle"),
-            .init(minXP: 1500, emoji: "🐢", title: "🎩 Elder turtle"),
-            .init(minXP: 2500, emoji: "🐉", title: "👑 Ancient dragon"),
+            .init(minXP: 0, emoji: "🥚", title: "A patient egg", sprite: "egg"),
+            .init(minXP: 20, emoji: "🐢", title: "Hatchling", sprite: "tot"),
+            .init(minXP: 100, emoji: "🐢", title: "Tiny turtle", sprite: "turtleB"),
+            .init(minXP: 250, emoji: "🐢", title: "Steady turtle", sprite: "turtleT"),
+            .init(minXP: 500, emoji: "🐢", title: "Proper turtle", sprite: "turtleA"),
+            .init(minXP: 900, emoji: "🐢", title: "✨ Wise turtle", sprite: "turtle"),
+            .init(minXP: 1500, emoji: "🐢", title: "🎩 Elder turtle", sprite: "turtle"),
+            .init(minXP: 2500, emoji: "🐉", title: "👑 Ancient dragon", sprite: "turtle"),
         ]
         case .plant: return [
-            .init(minXP: 0, emoji: "🌰", title: "A hopeful seed"),
-            .init(minXP: 20, emoji: "🌱", title: "Sprout"),
-            .init(minXP: 100, emoji: "🌿", title: "Seedling"),
-            .init(minXP: 250, emoji: "🪴", title: "Potted & proud"),
-            .init(minXP: 500, emoji: "🌳", title: "Young tree"),
-            .init(minXP: 900, emoji: "🌸", title: "✨ In bloom"),
-            .init(minXP: 1500, emoji: "🌺", title: "🎩 Show-stopper"),
-            .init(minXP: 2500, emoji: "🌻", title: "👑 Garden royalty"),
+            .init(minXP: 0, emoji: "🌰", title: "A hopeful seed", sprite: "egg"),
+            .init(minXP: 20, emoji: "🌱", title: "Sprout", sprite: "sprout"),
+            .init(minXP: 100, emoji: "🌿", title: "Seedling", sprite: "plantB"),
+            .init(minXP: 250, emoji: "🪴", title: "Potted & proud", sprite: "plantT"),
+            .init(minXP: 500, emoji: "🌳", title: "Young tree", sprite: "plantA"),
+            .init(minXP: 900, emoji: "🌸", title: "✨ In bloom", sprite: "plant"),
+            .init(minXP: 1500, emoji: "🌺", title: "🎩 Show-stopper", sprite: "plant"),
+            .init(minXP: 2500, emoji: "🌻", title: "👑 Garden royalty", sprite: "plant"),
         ]
         case .pixel: return [
-            .init(minXP: 0, emoji: "🥚", title: "A glitchy egg"),
-            .init(minXP: 20, emoji: "👾", title: "8-bit blob"),
-            .init(minXP: 100, emoji: "👾", title: "16-bit critter"),
-            .init(minXP: 250, emoji: "👾", title: "32-bit creature"),
-            .init(minXP: 500, emoji: "👾", title: "64-bit being"),
-            .init(minXP: 900, emoji: "👾", title: "✨ HD remaster"),
-            .init(minXP: 1500, emoji: "👾", title: "🎩 Ray-traced"),
-            .init(minXP: 2500, emoji: "👾", title: "👑 Final boss"),
+            .init(minXP: 0, emoji: "🥚", title: "A glitchy egg", sprite: "egg"),
+            .init(minXP: 20, emoji: "👾", title: "8-bit blob", sprite: "bit"),
+            .init(minXP: 100, emoji: "👾", title: "16-bit critter", sprite: "blob"),
+            .init(minXP: 250, emoji: "👾", title: "32-bit creature", sprite: "pixelB"),
+            .init(minXP: 500, emoji: "👾", title: "64-bit being", sprite: "pixelT"),
+            .init(minXP: 900, emoji: "👾", title: "✨ HD remaster", sprite: "pixelA"),
+            .init(minXP: 1500, emoji: "👾", title: "🎩 Ray-traced", sprite: "pixelA"),
+            .init(minXP: 2500, emoji: "👾", title: "👑 Final boss", sprite: "pixelA"),
         ]
         }
     }

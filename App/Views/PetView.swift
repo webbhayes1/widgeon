@@ -35,8 +35,8 @@ struct PetView: View {
     private var onboarding: some View {
         VStack(spacing: 22) {
             Spacer()
-            Text("🥚")
-                .font(.system(size: 80))
+            PixelSpriteView(sprite: "egg", accessibilityLabel: "A mysterious egg")
+                .frame(width: 96, height: 96)
             Text("Meet your pet")
                 .font(Theme.serif(40))
                 .foregroundStyle(p.ink)
@@ -61,8 +61,8 @@ struct PetView: View {
                         draftCharacter = c
                     } label: {
                         VStack(spacing: 6) {
-                            Text(c.stages[4].emoji)
-                                .font(.system(size: 38))
+                            PixelSpriteView(sprite: c.stages[4].sprite, accessibilityLabel: c.displayName)
+                                .frame(width: 44, height: 44)
                             Text(c.displayName)
                                 .font(.system(size: 11, weight: .semibold))
                                 .foregroundStyle(p.ink.opacity(0.85))
@@ -137,8 +137,8 @@ struct PetView: View {
 
             Spacer()
 
-            Text(stage.emoji)
-                .font(.system(size: 140))
+            PixelSpriteView(sprite: stage.sprite, accessibilityLabel: stage.title)
+                .frame(width: 176, height: 176)
                 .shadow(color: p.gold.opacity(0.35), radius: 30)
                 .rotationEffect(.degrees(dancing ? 12 : 0))
                 .offset(y: dancing ? -22 : 0)

@@ -11,6 +11,7 @@
 		0AA2A920F404D3CE2698F2A5 /* ContentBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E029FE1092A7F7FB044E14 /* ContentBank.swift */; };
 		0C0761017589E5E57D050E70 /* Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EEA2954F7D7DEF9589071D /* Intents.swift */; };
 		0F8847706E2CCFE5457D233C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553B8EBD4E03F6E4DC08DC12 /* Theme.swift */; };
+		0FB3B551E7687619F30D34E8 /* PixelSpriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B765B839AD279960D7D89F /* PixelSpriteView.swift */; };
 		1144AD7E7E1FDC926A8F6B5B /* WisdomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989B925E2A8512AE97FF2D0 /* WisdomModel.swift */; };
 		13A573559966B77DC68C123A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243120A3E2D328D9E8D2887C /* SettingsView.swift */; };
 		1AA0B50FE78814443682DB66 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1432EDD6500A4E7C648E7C36 /* TodayView.swift */; };
@@ -25,6 +26,7 @@
 		47CBE100F97155885D8D5F1B /* wisdom_stoic.json in Resources */ = {isa = PBXBuildFile; fileRef = 90B30143F09669A81EE09170 /* wisdom_stoic.json */; };
 		4BB0783779787B0426E4B03A /* WidgeonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490DF449340B44ADE1D4D319 /* WidgeonApp.swift */; };
 		4C050A374D94144C5AC2FD57 /* InstrumentSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA5A4AB79239510D03262F4A /* InstrumentSerif-Regular.ttf */; };
+		698F94AC43E18B9FE6001380 /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246D481724920843F868AE9 /* Sprites.swift */; };
 		6EED15EFEFCCF52F537737E9 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FB14B6419181B840E9D6A /* PetModel.swift */; };
 		77D37C6657BF719680A64D6C /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B576F5F52FBA98F1A0A7E82 /* DrinkModel.swift */; };
 		84BBD194FAE59C7E59F13D02 /* affirmations.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AB1A0547DF27DE4D84B10F1 /* affirmations.json */; };
@@ -35,11 +37,13 @@
 		A22AB0075954D5D91B397CC2 /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EF5BDFE9FA286390CC430 /* StepsManager.swift */; };
 		A59AF9DE94DA4583D64AA552 /* vocab.json in Resources */ = {isa = PBXBuildFile; fileRef = E5F2225BEB89593C2ADA8FB7 /* vocab.json */; };
 		A7B267F7C60521A96E643EA5 /* DailyPick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B110C5C14C0B74D6341A9090 /* DailyPick.swift */; };
+		BA6D76512B8DA3F8981A0F18 /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246D481724920843F868AE9 /* Sprites.swift */; };
 		C50D2BC181EEC50E8D41022B /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FB14B6419181B840E9D6A /* PetModel.swift */; };
 		CA3D89E1FF7588BF2DA7F4AB /* StaticWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6C7FC4144F5F35BAC54B78 /* StaticWidgets.swift */; };
 		D293A0538F6099417FE80787 /* InstrumentSerif-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C58AA19017F0C490D137966D /* InstrumentSerif-Italic.ttf */; };
 		DBDCED7E59C01C1535BAE55F /* StepsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41EF5BDFE9FA286390CC430 /* StepsManager.swift */; };
 		DF64DBFFC70A51D02426F193 /* wisdom_bible.json in Resources */ = {isa = PBXBuildFile; fileRef = C4E2F631D718360A308FC3A1 /* wisdom_bible.json */; };
+		DF69C13ADC3A39CA4AA0C533 /* PixelSpriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B765B839AD279960D7D89F /* PixelSpriteView.swift */; };
 		DFCB520B514FCC3DECC325C1 /* affirmations.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AB1A0547DF27DE4D84B10F1 /* affirmations.json */; };
 		E1C2B68A093F3FD0CCAD1579 /* roasts.json in Resources */ = {isa = PBXBuildFile; fileRef = CB3CF789E8EF81272C5A04E0 /* roasts.json */; };
 		E2E2C9F7BC93C3AFB9349627 /* WisdomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989B925E2A8512AE97FF2D0 /* WisdomModel.swift */; };
@@ -94,6 +98,7 @@
 		5DB2F549F02EC31B3641A850 /* fortunes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortunes.json; sourceTree = "<group>"; };
 		6E6C7FC4144F5F35BAC54B78 /* StaticWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgets.swift; sourceTree = "<group>"; };
 		77C286C7F6AA620442BA78E4 /* WidgeonWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = WidgeonWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		83B765B839AD279960D7D89F /* PixelSpriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelSpriteView.swift; sourceTree = "<group>"; };
 		8923A064CB97FAA085326BE5 /* WidgeonWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgeonWidgets.entitlements; sourceTree = "<group>"; };
 		90B30143F09669A81EE09170 /* wisdom_stoic.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = wisdom_stoic.json; sourceTree = "<group>"; };
 		911FB14B6419181B840E9D6A /* PetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetModel.swift; sourceTree = "<group>"; };
@@ -109,6 +114,7 @@
 		C5FCDB0969A7C068220A80BD /* WidgeonWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgeonWidgets.swift; sourceTree = "<group>"; };
 		CB3CF789E8EF81272C5A04E0 /* roasts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = roasts.json; sourceTree = "<group>"; };
 		E5F2225BEB89593C2ADA8FB7 /* vocab.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vocab.json; sourceTree = "<group>"; };
+		F246D481724920843F868AE9 /* Sprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprites.swift; sourceTree = "<group>"; };
 		F989B925E2A8512AE97FF2D0 /* WisdomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisdomModel.swift; sourceTree = "<group>"; };
 		F9EEA2954F7D7DEF9589071D /* Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +141,9 @@
 				9B576F5F52FBA98F1A0A7E82 /* DrinkModel.swift */,
 				F9EEA2954F7D7DEF9589071D /* Intents.swift */,
 				911FB14B6419181B840E9D6A /* PetModel.swift */,
+				83B765B839AD279960D7D89F /* PixelSpriteView.swift */,
 				BD5C4760D9D7ED499B2FBD9A /* SharedStore.swift */,
+				F246D481724920843F868AE9 /* Sprites.swift */,
 				C41EF5BDFE9FA286390CC430 /* StepsManager.swift */,
 				553B8EBD4E03F6E4DC08DC12 /* Theme.swift */,
 				F989B925E2A8512AE97FF2D0 /* WisdomModel.swift */,
@@ -322,8 +330,10 @@
 				0C0761017589E5E57D050E70 /* Intents.swift in Sources */,
 				C50D2BC181EEC50E8D41022B /* PetModel.swift in Sources */,
 				29B21A69C86D757CBC7E5FAC /* PetView.swift in Sources */,
+				0FB3B551E7687619F30D34E8 /* PixelSpriteView.swift in Sources */,
 				13A573559966B77DC68C123A /* SettingsView.swift in Sources */,
 				F1FE580693AEA05972A0F7C2 /* SharedStore.swift in Sources */,
+				698F94AC43E18B9FE6001380 /* Sprites.swift in Sources */,
 				DBDCED7E59C01C1535BAE55F /* StepsManager.swift in Sources */,
 				027F892CB1E75CE3232BC3F3 /* Theme.swift in Sources */,
 				1AA0B50FE78814443682DB66 /* TodayView.swift in Sources */,
@@ -343,8 +353,10 @@
 				E68073E657C417F4F3F58C1B /* Intents.swift in Sources */,
 				220DFDB22DEC933AA726F391 /* InteractiveWidgets.swift in Sources */,
 				6EED15EFEFCCF52F537737E9 /* PetModel.swift in Sources */,
+				DF69C13ADC3A39CA4AA0C533 /* PixelSpriteView.swift in Sources */,
 				2C86D863B485F441B1021DF7 /* ProgressionWidgets.swift in Sources */,
 				FBC2E8A0DC2481F4ADD1CDCB /* SharedStore.swift in Sources */,
+				BA6D76512B8DA3F8981A0F18 /* Sprites.swift in Sources */,
 				CA3D89E1FF7588BF2DA7F4AB /* StaticWidgets.swift in Sources */,
 				A22AB0075954D5D91B397CC2 /* StepsManager.swift in Sources */,
 				0F8847706E2CCFE5457D233C /* Theme.swift in Sources */,

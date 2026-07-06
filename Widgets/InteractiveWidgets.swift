@@ -67,8 +67,11 @@ struct PetWidgetView: View {
                     .foregroundStyle(p.gold)
                 Spacer(minLength: 0)
                 Button(intent: FeedPetIntent()) {
-                    Text(stage.emoji)
-                        .font(.system(size: family == .systemSmall ? 56 : 76))
+                    PixelSpriteView(sprite: stage.sprite, accessibilityLabel: stage.title)
+                        .frame(
+                            width: family == .systemSmall ? 72 : 96,
+                            height: family == .systemSmall ? 72 : 96
+                        )
                 }
                 .buttonStyle(.plain)
                 Spacer(minLength: 0)
