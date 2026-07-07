@@ -42,8 +42,8 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
             .init(minXP: 250, emoji: "😺", title: "Happy cat", sprite: "catT"),
             .init(minXP: 500, emoji: "🐈", title: "Proper cat", sprite: "catA"),
             .init(minXP: 900, emoji: "🐈‍⬛", title: "✨ Mystic cat", sprite: "cat"),
-            .init(minXP: 1500, emoji: "😼", title: "🎩 Distinguished cat", sprite: "cat2"),
-            .init(minXP: 2500, emoji: "🐅", title: "👑 Apex feline", sprite: "cat2"),
+            .init(minXP: 1500, emoji: "😼", title: "🎩 Distinguished cat", sprite: "catHat"),
+            .init(minXP: 2500, emoji: "🐅", title: "👑 Apex feline", sprite: "catCrown"),
         ]
         case .dog: return [
             .init(minXP: 0, emoji: "🥚", title: "A wiggly egg", sprite: "egg"),
@@ -52,8 +52,8 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
             .init(minXP: 250, emoji: "🐕", title: "Good dog", sprite: "dogT"),
             .init(minXP: 500, emoji: "🦮", title: "Very good dog", sprite: "dogA"),
             .init(minXP: 900, emoji: "🐕‍🦺", title: "✨ Best in show", sprite: "dog"),
-            .init(minXP: 1500, emoji: "🐩", title: "🎩 Distinguished dog", sprite: "dog"),
-            .init(minXP: 2500, emoji: "🐺", title: "👑 Alpha wolf", sprite: "dog"),
+            .init(minXP: 1500, emoji: "🐩", title: "🎩 Distinguished dog", sprite: "dogHat"),
+            .init(minXP: 2500, emoji: "🐺", title: "👑 Alpha wolf", sprite: "dogCrown"),
         ]
         case .turtle: return [
             .init(minXP: 0, emoji: "🥚", title: "A patient egg", sprite: "egg"),
@@ -62,8 +62,8 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
             .init(minXP: 250, emoji: "🐢", title: "Steady turtle", sprite: "turtleT"),
             .init(minXP: 500, emoji: "🐢", title: "Proper turtle", sprite: "turtleA"),
             .init(minXP: 900, emoji: "🐢", title: "✨ Wise turtle", sprite: "turtle"),
-            .init(minXP: 1500, emoji: "🐢", title: "🎩 Elder turtle", sprite: "turtle"),
-            .init(minXP: 2500, emoji: "🐉", title: "👑 Ancient dragon", sprite: "turtle"),
+            .init(minXP: 1500, emoji: "🐢", title: "🎩 Elder turtle", sprite: "turtleHat"),
+            .init(minXP: 2500, emoji: "🐉", title: "👑 Ancient dragon", sprite: "turtleCrown"),
         ]
         case .plant: return [
             .init(minXP: 0, emoji: "🌰", title: "A hopeful seed", sprite: "egg"),
@@ -72,8 +72,8 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
             .init(minXP: 250, emoji: "🪴", title: "Potted & proud", sprite: "plantT"),
             .init(minXP: 500, emoji: "🌳", title: "Young tree", sprite: "plantA"),
             .init(minXP: 900, emoji: "🌸", title: "✨ In bloom", sprite: "plant"),
-            .init(minXP: 1500, emoji: "🌺", title: "🎩 Show-stopper", sprite: "plant"),
-            .init(minXP: 2500, emoji: "🌻", title: "👑 Garden royalty", sprite: "plant"),
+            .init(minXP: 1500, emoji: "🌺", title: "🎩 Show-stopper", sprite: "plantHat"),
+            .init(minXP: 2500, emoji: "🌻", title: "👑 Garden royalty", sprite: "plantCrown"),
         ]
         case .pixel: return [
             .init(minXP: 0, emoji: "🥚", title: "A glitchy egg", sprite: "egg"),
@@ -82,8 +82,8 @@ enum PetCharacter: String, CaseIterable, Codable, Identifiable {
             .init(minXP: 250, emoji: "👾", title: "32-bit creature", sprite: "pixelB"),
             .init(minXP: 500, emoji: "👾", title: "64-bit being", sprite: "pixelT"),
             .init(minXP: 900, emoji: "👾", title: "✨ HD remaster", sprite: "pixelA"),
-            .init(minXP: 1500, emoji: "👾", title: "🎩 Ray-traced", sprite: "pixelA"),
-            .init(minXP: 2500, emoji: "👾", title: "👑 Final boss", sprite: "pixelA"),
+            .init(minXP: 1500, emoji: "👾", title: "🎩 Ray-traced", sprite: "pixelHat"),
+            .init(minXP: 2500, emoji: "👾", title: "👑 Final boss", sprite: "pixelCrown"),
         ]
         }
     }
