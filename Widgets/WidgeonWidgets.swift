@@ -14,6 +14,7 @@ struct WidgeonWidgetBundle: WidgetBundle {
         FortuneWidget()
         XPWidget()
         WisdomWidget()
+        CountdownWidget()
     }
 }
 
