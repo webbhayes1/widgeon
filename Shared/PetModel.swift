@@ -126,6 +126,12 @@ enum Pet {
         state.xp ?? (state.feeds * 20 + (state.trainedDays ?? 0) * 30)
     }
 
+    /// Index of the current stage in `character.stages` (0-based).
+    static func stageIndex(_ state: PetState) -> Int {
+        let xp = petXP(state)
+        return state.character.stages.lastIndex(where: { xp >= $0.minXP }) ?? 0
+    }
+
     static func stage(for state: PetState) -> PetStage {
         let stages = state.character.stages
         let xp = petXP(state)
