@@ -44,6 +44,11 @@ struct PetView: View {
             // the pet past a threshold since we last looked, celebrate now.
             checkForEvolution(announce: pet.feeds > 0)
             Task { await steps.refresh() }
+            // Screenshot hook (like WIDGEON_TOD): fire the heart burst
+            // without a tap so the animation can be captured on the sim.
+            if ProcessInfo.processInfo.environment["WIDGEON_AUTOFEED"] != nil {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { spawnHearts() }
+            }
         }
         .sheet(isPresented: $editing) { editSheet }
     }

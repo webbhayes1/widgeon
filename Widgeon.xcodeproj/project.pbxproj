@@ -28,6 +28,7 @@
 		47CBE100F97155885D8D5F1B /* wisdom_stoic.json in Resources */ = {isa = PBXBuildFile; fileRef = 90B30143F09669A81EE09170 /* wisdom_stoic.json */; };
 		4BB0783779787B0426E4B03A /* WidgeonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490DF449340B44ADE1D4D319 /* WidgeonApp.swift */; };
 		4C050A374D94144C5AC2FD57 /* InstrumentSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA5A4AB79239510D03262F4A /* InstrumentSerif-Regular.ttf */; };
+		5D1EA18323B42EC393D060E8 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F6B5F5817D48247A1AD27D /* CountdownView.swift */; };
 		698F94AC43E18B9FE6001380 /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246D481724920843F868AE9 /* Sprites.swift */; };
 		6EED15EFEFCCF52F537737E9 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FB14B6419181B840E9D6A /* PetModel.swift */; };
 		77D37C6657BF719680A64D6C /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B576F5F52FBA98F1A0A7E82 /* DrinkModel.swift */; };
@@ -50,6 +51,7 @@
 		E1C2B68A093F3FD0CCAD1579 /* roasts.json in Resources */ = {isa = PBXBuildFile; fileRef = CB3CF789E8EF81272C5A04E0 /* roasts.json */; };
 		E2E2C9F7BC93C3AFB9349627 /* WisdomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989B925E2A8512AE97FF2D0 /* WisdomModel.swift */; };
 		E68073E657C417F4F3F58C1B /* Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EEA2954F7D7DEF9589071D /* Intents.swift */; };
+		EC0DCFD810DF71858C6E54B6 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F6B5F5817D48247A1AD27D /* CountdownView.swift */; };
 		EC108319EA2879445F892524 /* fortunes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DB2F549F02EC31B3641A850 /* fortunes.json */; };
 		EE744B2A460133BA1FAA79D0 /* fortunes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DB2F549F02EC31B3641A850 /* fortunes.json */; };
 		EFE2A842E61E6D1CC4A2B1B1 /* XPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6AD575BB24DC788DB93DA2 /* XPModel.swift */; };
@@ -95,6 +97,7 @@
 		3AB1A0547DF27DE4D84B10F1 /* affirmations.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = affirmations.json; sourceTree = "<group>"; };
 		3B6AD575BB24DC788DB93DA2 /* XPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPModel.swift; sourceTree = "<group>"; };
 		3D8C5C5E2C21F625DDE489D3 /* CountdownWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownWidget.swift; sourceTree = "<group>"; };
+		41F6B5F5817D48247A1AD27D /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		469D758846E4259F0A93A350 /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
 		490DF449340B44ADE1D4D319 /* WidgeonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgeonApp.swift; sourceTree = "<group>"; };
 		4B05815029C23BC4A6DAF9F9 /* InteractiveWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveWidgets.swift; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				C4E029FE1092A7F7FB044E14 /* ContentBank.swift */,
+				41F6B5F5817D48247A1AD27D /* CountdownView.swift */,
 				B110C5C14C0B74D6341A9090 /* DailyPick.swift */,
 				9B576F5F52FBA98F1A0A7E82 /* DrinkModel.swift */,
 				F9EEA2954F7D7DEF9589071D /* Intents.swift */,
@@ -332,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34F436DDCD04AD482ADA688C /* ContentBank.swift in Sources */,
+				EC0DCFD810DF71858C6E54B6 /* CountdownView.swift in Sources */,
 				9FAD6BAFC5498364072EB3C1 /* DailyPick.swift in Sources */,
 				32DE6DADB7B446089F13AC82 /* DrinkModel.swift in Sources */,
 				0C0761017589E5E57D050E70 /* Intents.swift in Sources */,
@@ -356,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AA2A920F404D3CE2698F2A5 /* ContentBank.swift in Sources */,
+				5D1EA18323B42EC393D060E8 /* CountdownView.swift in Sources */,
 				14715FC20E95BE4C21429799 /* CountdownWidget.swift in Sources */,
 				A7B267F7C60521A96E643EA5 /* DailyPick.swift in Sources */,
 				77D37C6657BF719680A64D6C /* DrinkModel.swift in Sources */,
