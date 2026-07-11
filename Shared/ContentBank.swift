@@ -10,6 +10,7 @@ struct VocabEntry: Codable, Hashable {
 enum ContentBank {
     static let vocab: [VocabEntry] = load("vocab")
     static let roasts: [String] = load("roasts")
+    static let roastsClean: [String] = load("roasts_clean")
     static let affirmations: [String] = load("affirmations")
     static let fortunes: [String] = load("fortunes")
     static let wisdomBible: [WisdomEntry] = load("wisdom_bible")

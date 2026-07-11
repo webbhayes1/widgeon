@@ -11,6 +11,7 @@
 		027F892CB1E75CE3232BC3F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553B8EBD4E03F6E4DC08DC12 /* Theme.swift */; };
 		0AA2A920F404D3CE2698F2A5 /* ContentBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E029FE1092A7F7FB044E14 /* ContentBank.swift */; };
 		0C0761017589E5E57D050E70 /* Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EEA2954F7D7DEF9589071D /* Intents.swift */; };
+		0F55DC7B0574C7E22CAD0E28 /* roasts_clean.json in Resources */ = {isa = PBXBuildFile; fileRef = 7128CE53A6BD42C956E508FE /* roasts_clean.json */; };
 		0F8847706E2CCFE5457D233C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553B8EBD4E03F6E4DC08DC12 /* Theme.swift */; };
 		0FB3B551E7687619F30D34E8 /* PixelSpriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B765B839AD279960D7D89F /* PixelSpriteView.swift */; };
 		1144AD7E7E1FDC926A8F6B5B /* WisdomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F989B925E2A8512AE97FF2D0 /* WisdomModel.swift */; };
@@ -31,6 +32,7 @@
 		4BB0783779787B0426E4B03A /* WidgeonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490DF449340B44ADE1D4D319 /* WidgeonApp.swift */; };
 		4C050A374D94144C5AC2FD57 /* InstrumentSerif-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA5A4AB79239510D03262F4A /* InstrumentSerif-Regular.ttf */; };
 		5D1EA18323B42EC393D060E8 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F6B5F5817D48247A1AD27D /* CountdownView.swift */; };
+		613D28254FF765E2156007E4 /* roasts_clean.json in Resources */ = {isa = PBXBuildFile; fileRef = 7128CE53A6BD42C956E508FE /* roasts_clean.json */; };
 		698F94AC43E18B9FE6001380 /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246D481724920843F868AE9 /* Sprites.swift */; };
 		6EED15EFEFCCF52F537737E9 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FB14B6419181B840E9D6A /* PetModel.swift */; };
 		77D37C6657BF719680A64D6C /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B576F5F52FBA98F1A0A7E82 /* DrinkModel.swift */; };
@@ -109,6 +111,7 @@
 		577EB166CCA15C30BF2B3195 /* Achievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
 		5DB2F549F02EC31B3641A850 /* fortunes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortunes.json; sourceTree = "<group>"; };
 		6E6C7FC4144F5F35BAC54B78 /* StaticWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgets.swift; sourceTree = "<group>"; };
+		7128CE53A6BD42C956E508FE /* roasts_clean.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = roasts_clean.json; sourceTree = "<group>"; };
 		77C286C7F6AA620442BA78E4 /* WidgeonWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = WidgeonWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B765B839AD279960D7D89F /* PixelSpriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelSpriteView.swift; sourceTree = "<group>"; };
 		86490C1D57EEE452D5CA4F53 /* Meadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meadow.swift; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 				5DB2F549F02EC31B3641A850 /* fortunes.json */,
 				C58AA19017F0C490D137966D /* InstrumentSerif-Italic.ttf */,
 				BA5A4AB79239510D03262F4A /* InstrumentSerif-Regular.ttf */,
+				7128CE53A6BD42C956E508FE /* roasts_clean.json */,
 				CB3CF789E8EF81272C5A04E0 /* roasts.json */,
 				E5F2225BEB89593C2ADA8FB7 /* vocab.json */,
 				C4E2F631D718360A308FC3A1 /* wisdom_bible.json */,
@@ -314,6 +318,7 @@
 				84BBD194FAE59C7E59F13D02 /* affirmations.json in Resources */,
 				EC108319EA2879445F892524 /* fortunes.json in Resources */,
 				924F0545254B2FAB71DAE95D /* roasts.json in Resources */,
+				613D28254FF765E2156007E4 /* roasts_clean.json in Resources */,
 				A59AF9DE94DA4583D64AA552 /* vocab.json in Resources */,
 				DF64DBFFC70A51D02426F193 /* wisdom_bible.json in Resources */,
 				47CBE100F97155885D8D5F1B /* wisdom_stoic.json in Resources */,
@@ -329,6 +334,7 @@
 				DFCB520B514FCC3DECC325C1 /* affirmations.json in Resources */,
 				EE744B2A460133BA1FAA79D0 /* fortunes.json in Resources */,
 				E1C2B68A093F3FD0CCAD1579 /* roasts.json in Resources */,
+				0F55DC7B0574C7E22CAD0E28 /* roasts_clean.json in Resources */,
 				2EAA73D098F51039D214A78E /* vocab.json in Resources */,
 				9244F10D2E02F561EE613CF6 /* wisdom_bible.json in Resources */,
 				F2A43D2D317FCF62EDBF5AB1 /* wisdom_stoic.json in Resources */,

@@ -8,6 +8,7 @@ struct SettingsView: View {
     @State private var drinkIsLimit = Drink.isLimit
     @State private var stepGoal = StepsManager.goal
     @State private var wisdomTradition = Wisdom.tradition
+    @State private var roastSpicy = DailyPick.roastSpicy
     @State private var lifeMode = SharedStore.defaults.bool(forKey: "life.mode")
     @State private var birthday: Date = {
         let ts = SharedStore.defaults.double(forKey: "life.birthday")
@@ -45,6 +46,16 @@ struct SettingsView: View {
                             .font(.footnote)
                             .foregroundStyle(p.muted)
                     }
+                }
+                .listRowBackground(p.cardBG)
+
+                Section("Daily roast") {
+                    Toggle("Spicy mode", isOn: $roastSpicy)
+                    Text(roastSpicy
+                        ? "Uncensored tough love. Not for the faint of heart."
+                        : "Clean tough love. Flip the switch if you can take it.")
+                        .font(.footnote)
+                        .foregroundStyle(p.muted)
                 }
                 .listRowBackground(p.cardBG)
 
@@ -99,6 +110,7 @@ struct SettingsView: View {
         Drink.isLimit = drinkIsLimit
         StepsManager.goal = stepGoal
         Wisdom.tradition = wisdomTradition
+        DailyPick.roastSpicy = roastSpicy
         SharedStore.defaults.set(lifeMode, forKey: "life.mode")
         SharedStore.defaults.set(birthday.timeIntervalSince1970, forKey: "life.birthday")
         WidgetCenter.shared.reloadAllTimelines()

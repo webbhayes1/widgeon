@@ -28,8 +28,17 @@ enum DailyPick {
         ContentBank.vocab[index(count: ContentBank.vocab.count, prime: 131, date: date)]
     }
 
+    /// Spicy mode opts into the explicit bank; the default is clean so the
+    /// App Store rating can stay 4+. Banks map 1:1, so today's roast is the
+    /// same message either way, just with the gloves on or off.
+    static var roastSpicy: Bool {
+        get { SharedStore.defaults.bool(forKey: "roast.spicy") }
+        set { SharedStore.defaults.set(newValue, forKey: "roast.spicy") }
+    }
+
     static func roast(for date: Date = Date()) -> String {
-        ContentBank.roasts[index(count: ContentBank.roasts.count, prime: 37, date: date)]
+        let bank = roastSpicy ? ContentBank.roasts : ContentBank.roastsClean
+        return bank[index(count: bank.count, prime: 37, date: date)]
     }
 
     static func affirmation(for date: Date = Date()) -> String {

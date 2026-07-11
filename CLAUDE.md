@@ -28,7 +28,8 @@ Source: `~/Downloads/Widgeon Daily Ritual App.zip` (README + HTML prototype; pix
 
 ## Roadmap after design
 - Achievements DONE: `Shared/Achievements.swift` (18 badges: feeds/streaks/train days/stages/XP levels; unlock dates persisted under `achievements.unlocked` so broken streaks never re-lock), `App/Views/AchievementsView.swift` sheet, PetView toast queue (one at a time, evolution banner owns the big moment). Screenshot hook: `SIMCTL_CHILD_WIDGEON_ACHIEVEMENTS=1` opens the sheet on launch.
-- Remaining: gacha egg collection (needs art), pixel town, more wisdom traditions (Quran/Gita/Dhammapada — source translations carefully, citations exact), roast spice toggle (clean default for 4+ rating), StoreKit unlock, app icon (a widgeon is a duck).
+- Roast spice toggle DONE: `roasts_clean.json` maps 1:1 to the explicit bank (same daily message, gloves on/off), `DailyPick.roastSpicy` (default false/clean for 4+ rating), Settings "Daily roast → Spicy mode" toggle.
+- Remaining: gacha egg collection (needs art), pixel town, more wisdom traditions (Quran/Gita/Dhammapada — source translations carefully, citations exact), StoreKit unlock, app icon (a widgeon is a duck).
 
 ## Working style
 User wants token-efficient work: lean prose, targeted reads, batch edits, no decorative recaps. Scriptable prototypes (12 scripts) still live in the user's iCloud Scriptable folder — separate from this repo.
