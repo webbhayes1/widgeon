@@ -9,6 +9,8 @@ struct PetView: View {
     @State private var editing = false
     @State private var hearts: [Heart] = []
     @State private var evolvedStage: PetStage? = nil
+    @State private var showingAchievements = false
+    @State private var toastAchievement: Achievement? = nil
     @ObservedObject private var steps = StepsManager.shared
 
     struct Heart: Identifiable {
@@ -43,14 +45,19 @@ struct PetView: View {
             // Training happens in the background (step goal) — if it pushed
             // the pet past a threshold since we last looked, celebrate now.
             checkForEvolution(announce: pet.feeds > 0)
+            checkForAchievements(announce: pet.feeds > 0)
             Task { await steps.refresh() }
             // Screenshot hook (like WIDGEON_TOD): fire the heart burst
             // without a tap so the animation can be captured on the sim.
             if ProcessInfo.processInfo.environment["WIDGEON_AUTOFEED"] != nil {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) { spawnHearts() }
             }
+            if ProcessInfo.processInfo.environment["WIDGEON_ACHIEVEMENTS"] != nil {
+                showingAchievements = true
+            }
         }
         .sheet(isPresented: $editing) { editSheet }
+        .sheet(isPresented: $showingAchievements) { AchievementsView(pet: pet) }
     }
 
     // MARK: First run: name it, pick a character, hatch it
@@ -230,6 +237,7 @@ struct PetView: View {
                         celebrate()
                         spawnHearts()
                         checkForEvolution(announce: true)
+                        checkForAchievements(announce: true)
                     }
                 } label: {
                     Text(fedToday ? "Fed today ✓" : "Feed \(pet.name) 🍞")
@@ -242,15 +250,24 @@ struct PetView: View {
                 .disabled(fedToday)
                 .padding(.horizontal, 40)
 
-                Text("🏆 Achievements — coming soon")
-                    .font(.footnote)
-                    .foregroundStyle(mp.ink.opacity(0.55))
-                    .shadow(color: meadowShadow, radius: 3)
-                    .padding(.bottom, 8)
+                Button {
+                    showingAchievements = true
+                } label: {
+                    let earned = Achievements.unlocked().count
+                    Text("🏆 Achievements · \(earned)/\(Achievements.all.count)")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(mp.ink.opacity(0.75))
+                        .shadow(color: meadowShadow, radius: 3)
+                }
+                .padding(.bottom, 8)
             }
 
             if let evolved = evolvedStage {
                 evolutionBanner(evolved)
+            }
+
+            if let toast = toastAchievement {
+                achievementToast(toast)
             }
         }
     }
@@ -333,6 +350,54 @@ struct PetView: View {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             withAnimation(.easeIn(duration: 0.4)) { evolvedStage = nil }
+        }
+    }
+
+    // MARK: Achievements
+
+    /// Compact banner when a badge is earned (the evolution banner owns the
+    /// big moment, so this stays small and near the bottom).
+    private func achievementToast(_ a: Achievement) -> some View {
+        VStack {
+            Spacer()
+            HStack(spacing: 10) {
+                Text(a.emoji).font(.system(size: 22))
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Achievement unlocked")
+                        .font(.system(size: 10, weight: .bold))
+                        .kerning(1)
+                        .foregroundStyle(mp.gold)
+                    Text(a.title)
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(mp.ink)
+                }
+            }
+            .padding(.vertical, 10)
+            .padding(.horizontal, 18)
+            .background(Capsule().fill(mp.base))
+            .overlay(Capsule().strokeBorder(mp.gold, lineWidth: 1.5))
+            .shadow(color: mp.gold.opacity(0.35), radius: 16)
+            .padding(.bottom, 140)
+            .onTapGesture { withAnimation(.easeIn(duration: 0.2)) { toastAchievement = nil } }
+        }
+        .transition(.move(edge: .bottom).combined(with: .opacity))
+    }
+
+    /// Records newly earned achievements; announces them one at a time.
+    private func checkForAchievements(announce: Bool) {
+        let fresh = Achievements.check(pet)
+        guard announce, !fresh.isEmpty else { return }
+        show(achievements: fresh)
+    }
+
+    private func show(achievements: [Achievement]) {
+        guard let first = achievements.first else { return }
+        withAnimation(.spring(duration: 0.4)) { toastAchievement = first }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.6) {
+            withAnimation(.easeIn(duration: 0.3)) { toastAchievement = nil }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                show(achievements: Array(achievements.dropFirst()))
+            }
         }
     }
 
