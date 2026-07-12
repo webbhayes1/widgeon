@@ -71,3 +71,4 @@ schemes:
         Widgeon: all
     run:
       config: Debug
+      storeKitConfiguration: Products.storekit

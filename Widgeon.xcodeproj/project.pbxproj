@@ -36,7 +36,9 @@
 		613D28254FF765E2156007E4 /* roasts_clean.json in Resources */ = {isa = PBXBuildFile; fileRef = 7128CE53A6BD42C956E508FE /* roasts_clean.json */; };
 		698F94AC43E18B9FE6001380 /* Sprites.swift in Sources */ = {isa = PBXBuildFile; fileRef = F246D481724920843F868AE9 /* Sprites.swift */; };
 		6EED15EFEFCCF52F537737E9 /* PetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FB14B6419181B840E9D6A /* PetModel.swift */; };
+		7179BC0F0F11065812CE53D2 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C33D4B769B87FAF0D2E570 /* PaywallView.swift */; };
 		77D37C6657BF719680A64D6C /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B576F5F52FBA98F1A0A7E82 /* DrinkModel.swift */; };
+		7C384A639EF5310AC1156A50 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB64C07B9A42CACA1AD7AB96 /* Store.swift */; };
 		84BBD194FAE59C7E59F13D02 /* affirmations.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AB1A0547DF27DE4D84B10F1 /* affirmations.json */; };
 		88429994F03EFFF00B8ABC37 /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577EB166CCA15C30BF2B3195 /* Achievements.swift */; };
 		9244F10D2E02F561EE613CF6 /* wisdom_bible.json in Resources */ = {isa = PBXBuildFile; fileRef = C4E2F631D718360A308FC3A1 /* wisdom_bible.json */; };
@@ -114,6 +116,7 @@
 		5DB2F549F02EC31B3641A850 /* fortunes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortunes.json; sourceTree = "<group>"; };
 		6E6C7FC4144F5F35BAC54B78 /* StaticWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticWidgets.swift; sourceTree = "<group>"; };
 		7128CE53A6BD42C956E508FE /* roasts_clean.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = roasts_clean.json; sourceTree = "<group>"; };
+		71C33D4B769B87FAF0D2E570 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
 		77C286C7F6AA620442BA78E4 /* WidgeonWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = WidgeonWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B765B839AD279960D7D89F /* PixelSpriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelSpriteView.swift; sourceTree = "<group>"; };
 		86490C1D57EEE452D5CA4F53 /* Meadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meadow.swift; sourceTree = "<group>"; };
@@ -132,6 +135,7 @@
 		C5FCDB0969A7C068220A80BD /* WidgeonWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgeonWidgets.swift; sourceTree = "<group>"; };
 		CB3CF789E8EF81272C5A04E0 /* roasts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = roasts.json; sourceTree = "<group>"; };
 		E5F2225BEB89593C2ADA8FB7 /* vocab.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vocab.json; sourceTree = "<group>"; };
+		EB64C07B9A42CACA1AD7AB96 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F246D481724920843F868AE9 /* Sprites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprites.swift; sourceTree = "<group>"; };
 		F989B925E2A8512AE97FF2D0 /* WisdomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WisdomModel.swift; sourceTree = "<group>"; };
 		F9EEA2954F7D7DEF9589071D /* Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intents.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7172F70E933414865C6D40 /* AchievementsView.swift */,
+				71C33D4B769B87FAF0D2E570 /* PaywallView.swift */,
 				469D758846E4259F0A93A350 /* PetView.swift */,
 				243120A3E2D328D9E8D2887C /* SettingsView.swift */,
 				1432EDD6500A4E7C648E7C36 /* TodayView.swift */,
@@ -216,6 +221,7 @@
 			children = (
 				5B112CBDAE09578B87617872 /* Assets.xcassets */,
 				2745F2A7149C1B72456FE950 /* Info.plist */,
+				EB64C07B9A42CACA1AD7AB96 /* Store.swift */,
 				1847B5E288C71F482CEA4DCE /* Widgeon.entitlements */,
 				490DF449340B44ADE1D4D319 /* WidgeonApp.swift */,
 				A9CA51967A4F809723E7729D /* Views */,
@@ -360,6 +366,7 @@
 				32DE6DADB7B446089F13AC82 /* DrinkModel.swift in Sources */,
 				0C0761017589E5E57D050E70 /* Intents.swift in Sources */,
 				F47A05DFB6788D99A0E68F14 /* Meadow.swift in Sources */,
+				7179BC0F0F11065812CE53D2 /* PaywallView.swift in Sources */,
 				C50D2BC181EEC50E8D41022B /* PetModel.swift in Sources */,
 				29B21A69C86D757CBC7E5FAC /* PetView.swift in Sources */,
 				0FB3B551E7687619F30D34E8 /* PixelSpriteView.swift in Sources */,
@@ -367,6 +374,7 @@
 				F1FE580693AEA05972A0F7C2 /* SharedStore.swift in Sources */,
 				698F94AC43E18B9FE6001380 /* Sprites.swift in Sources */,
 				DBDCED7E59C01C1535BAE55F /* StepsManager.swift in Sources */,
+				7C384A639EF5310AC1156A50 /* Store.swift in Sources */,
 				027F892CB1E75CE3232BC3F3 /* Theme.swift in Sources */,
 				1AA0B50FE78814443682DB66 /* TodayView.swift in Sources */,
 				4BB0783779787B0426E4B03A /* WidgeonApp.swift in Sources */,

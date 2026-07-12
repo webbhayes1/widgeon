@@ -11,6 +11,8 @@ struct PetView: View {
     @State private var evolvedStage: PetStage? = nil
     @State private var showingAchievements = false
     @State private var toastAchievement: Achievement? = nil
+    @State private var showingPaywall = false
+    @ObservedObject private var store = Store.shared
     @ObservedObject private var steps = StepsManager.shared
 
     struct Heart: Identifiable {
@@ -55,9 +57,13 @@ struct PetView: View {
             if ProcessInfo.processInfo.environment["WIDGEON_ACHIEVEMENTS"] != nil {
                 showingAchievements = true
             }
+            if ProcessInfo.processInfo.environment["WIDGEON_PAYWALL"] != nil {
+                showingPaywall = true
+            }
         }
         .sheet(isPresented: $editing) { editSheet }
         .sheet(isPresented: $showingAchievements) { AchievementsView(pet: pet) }
+        .sheet(isPresented: $showingPaywall) { PaywallView() }
     }
 
     // MARK: First run: name it, pick a character, hatch it
@@ -93,7 +99,7 @@ struct PetView: View {
                         VStack(spacing: 6) {
                             PixelSpriteView(sprite: c.stages[4].sprite, accessibilityLabel: c.displayName)
                                 .frame(width: 44, height: 44)
-                            Text(c.displayName)
+                            Text(Store.isLocked(c) ? "🔒 \(c.displayName)" : c.displayName)
                                 .font(.system(size: 11, weight: .semibold))
                                 .foregroundStyle(p.ink.opacity(0.85))
                         }
@@ -119,6 +125,10 @@ struct PetView: View {
             Spacer()
 
             Button {
+                guard !Store.isLocked(draftCharacter) else {
+                    showingPaywall = true
+                    return
+                }
                 var updated = pet
                 updated.name = draftName.trimmingCharacters(in: .whitespaces).isEmpty
                     ? "Widge" : draftName.trimmingCharacters(in: .whitespaces)
@@ -422,7 +432,7 @@ struct PetView: View {
                 TextField("Name", text: $draftName)
                 Picker("Character", selection: $draftCharacter) {
                     ForEach(PetCharacter.allCases) { c in
-                        Text("\(c.stages[4].emoji) \(c.displayName)").tag(c)
+                        Text("\(c.stages[4].emoji) \(c.displayName)\(Store.isLocked(c) ? " 🔒" : "")").tag(c)
                     }
                 }
                 Text("Switching characters keeps all progress — same pet, new look.")
@@ -434,6 +444,11 @@ struct PetView: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
+                        guard draftCharacter == pet.character || !Store.isLocked(draftCharacter) else {
+                            editing = false
+                            showingPaywall = true
+                            return
+                        }
                         var updated = pet
                         updated.name = draftName.trimmingCharacters(in: .whitespaces).isEmpty
                             ? pet.name : draftName.trimmingCharacters(in: .whitespaces)

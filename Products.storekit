@@ -1,0 +1,33 @@
+{
+  "identifier" : "8E4C1A2B",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "6F2D9C41",
+      "localizations" : [
+        {
+          "description" : "Unlock all five extra characters, forever.",
+          "displayName" : "Widgeon Plus",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.webbhayes.widgeon.plus",
+      "referenceName" : "Widgeon Plus",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

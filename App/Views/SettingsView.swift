@@ -9,6 +9,7 @@ struct SettingsView: View {
     @State private var stepGoal = StepsManager.goal
     @State private var wisdomTradition = Wisdom.tradition
     @State private var roastSpicy = DailyPick.roastSpicy
+    @State private var showingPaywall = false
     @State private var lifeMode = SharedStore.defaults.bool(forKey: "life.mode")
     @State private var birthday: Date = {
         let ts = SharedStore.defaults.double(forKey: "life.birthday")
@@ -31,7 +32,7 @@ struct SettingsView: View {
                     TextField("Name", text: $pet.name)
                     Picker("Character", selection: $pet.character) {
                         ForEach(PetCharacter.allCases) { c in
-                            Text("\(c.stages.last!.emoji) \(c.displayName)").tag(c)
+                            Text("\(c.stages.last!.emoji) \(c.displayName)\(Store.isLocked(c) ? " 🔒" : "")").tag(c)
                         }
                     }
                 }
@@ -101,9 +102,17 @@ struct SettingsView: View {
             .toolbar(.hidden, for: .navigationBar)
         }
         .tint(p.accent)
+        .sheet(isPresented: $showingPaywall) { PaywallView() }
     }
 
     private func save() {
+        // Gate only a *change* to a locked character — a pet chosen before
+        // the paywall existed keeps its character.
+        let savedCharacter = Pet.load().character
+        if pet.character != savedCharacter && Store.isLocked(pet.character) {
+            pet.character = savedCharacter
+            showingPaywall = true
+        }
         Pet.save(pet)
         Drink.label = drinkLabel
         Drink.target = drinkTarget
